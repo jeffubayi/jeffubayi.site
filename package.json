@@ -1,9 +1,9 @@
 {
-  "name": "raptori",
+  "name": "ubeezy",
   "private": true,
   "description": "A gatsby portfolio and blog",
   "version": "1.0.0",
-  "author": "Joe McGrath <joe@raptori.dev>",
+  "author": "jeff ubayi",
   "dependencies": {
     "@babel/core": "^7.8.3",
     "@mdx-js/mdx": "^1.5.5",
