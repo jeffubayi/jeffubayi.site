@@ -1,0 +1,214 @@
+---
+path: '/blog/git'
+date: '2019-12-20'
+title: 'Learning git is not an option'
+subtitle: 'Useful Git cheatsheets to help you manoeuvre around the github eco-system'
+tags: ['home']
+featuredImage: './get.jpg'
+---
+
+It's such a waste of time and energy to have git-ignorant co-worker. Read the damn manual.
+A few tips on how I go about using git.
+
+***What is git?***
+
+![understand](./git.jpeg)
+
+Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
+
+With Git it’s easy to undo changes back and forth with a precise explanation of the changes that are made. It has the ability of:
+
+- Keeping a track of the changes i.e. different versions of the same file.
+
+- It also keeps a record of all the files present in a project.
+
+- Comparing and analyzing different codes with a detailed explanation.
+
+---
+
+***Basic Commands:***
+
+Initialize local git repository
+
+    $ git init
+
+check files to commits and branch name
+
+     $ git status
+
+add files to staging area.
+
+    $ git add FileName.txt
+
+add all modified and new files to staging area
+
+     $ git add -all
+
+add all files of directory to staging area
+
+     $ git add folder/
+
+Commit changes to local repository
+
+     $ git commit -m “Message to commit”
+
+history of commits
+
+     $ git log –
+
+Get help for any command
+
+     $ git help
+
+set global user name
+
+     $ git config –global user.name “Name”
+
+Show un-staged differences since last commit
+
+     $ git diff
+
+View staged differences
+
+     $ git diff –staged
+
+Un-stage files and HEAD Refers to last commit
+
+     $ git reset HEAD FileName
+
+Blow away all changes since last commit
+
+     $ git checkout – FileName
+
+Skip stagging to commit and Add changes from all tracked files. this Doesn’t add new (untracked) files
+
+     $ git commit -a -m “Modify readme”
+
+Reset into staging and Move to commit before ‘HEAD’
+
+     $ git reset –soft HEAD^
+
+Add to the last commit with new commit message
+
+     $ git commit –amend -m “New Message”
+
+Undo last commit and all changes
+
+     $ git reset –hard HEAD^
+
+Undo last 2 commits and all changes
+
+     $ git reset –hard HEAD^^
+
+Adding a remote
+
+     $ git remote add origin git url
+
+show remote repositories
+
+     $ git remote -v
+
+Remove remote
+
+     $ git remote rm
+
+Clone remote repository
+
+     $ git clone git url
+
+Create branch
+
+     $ git branch
+
+create and checkout branch
+
+     $ git checkout -b
+
+list available branches
+
+     $ git branch
+
+list remote available branches
+
+     $ git branch -r
+
+Switching between branches
+
+     $ git checkout
+
+merge 2 branches
+
+     $ git merge
+
+Delete branch
+
+     $ git branch -d
+
+Force delete branch
+
+     $ git branch -D
+
+get remote changes
+
+     $ git pull
+
+get the remote changes to local remote branch
+
+     $ git fetch
+
+merge local remote branch changes to local master branch
+
+     $ git merge
+
+shows branches alignments
+
+     $ git remote show origin
+
+remove remote branch
+
+     $ git push origin :
+
+To clean up deleted remote branches
+
+     $ git remote prune origin
+
+List all tags
+
+     $ git tag
+
+Create tag
+
+     $ git tag -a -m “Tag message”
+
+Push new tags to remote
+
+     $ git push –tags
+
+Revert to existing tag.
+
+     $ git checkout
+
+Determine who made changes to a file.
+
+     $ git blame
+
+Remove all unexpected files in your project (not committed).
+
+      $ git clean -dfx
+
+To push to remotes
+
+      $ git push -u origin master
+
+Modify amend the previous commit
+
+      $ git commit –amend
+
+Save uncommitted changes for later use
+
+      $ git stash    
+---
+That's all, Hope you git it now 👨💻
+
+
+
