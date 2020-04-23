@@ -1,11 +1,11 @@
 <p align="center">
-  <a href="https://raptori.dev">
+  <a href="https://jeffubayi.site">
     <img alt="Gatsby" src="icon.png" width="64" />
   </a>
 </p>
 
 <h1 align="center">
-  <a href="https://jeffubayi.site">
+  <a href="">
      My portfolio
   </a>
 </h1>
