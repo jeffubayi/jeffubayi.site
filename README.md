@@ -1,5 +1,4 @@
 <p align="center">
-  <a href="https://jeffubayi.site">
     <img alt="Gatsby" src="icon.png" width="64" />
   </a>
 </p>
