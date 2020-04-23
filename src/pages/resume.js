@@ -9,14 +9,15 @@ const ResumePage = () => (
 		<Resume>
 			<WaveSection disableTopMargin>
 				<p>
-					Here are a few technologies I've been working with recently:
-	                                -JavaScript (ES6, React, NodeJS)  - Python (Django,Flask, Docker).
+					I'm currently looking for a full-time developer role with the right company.
+	                                My inbox is always open, whether for freelance opportunities or just a potential project.
+	                                I'll reply ASAP.
 	     
 	                                For more details, download my resume as a PDF, or
 					check out some of my code on GitHub!
 				</p>
 				<p>
-					<Link to="/joe-mcgrath-resume.pdf" external button>
+					<Link to="/JEFFUBAYIRESUME.pdf" external button>
 						Download Resume
 					</Link>
 					&nbsp;
