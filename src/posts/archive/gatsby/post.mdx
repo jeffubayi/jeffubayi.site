@@ -2,7 +2,7 @@
 path: '/blog/gatsby'
 date: '2020-04-25'
 title: 'Building a Serverless JAMstack ECommerce Store with Gatsby & AWS Amplify'
-subtitle: 'In this post, you will learn how to build a full stack serverless JAMstack ECommerce store using Gatsby, AWS Amplify and JAMstack ECommerce.
+subtitle: 'In this post, you will learn how to build a full stack serverless JAMstack ECommerce store using React and deploy to Amazon Web Services .
 
 '
 featuredImage: './stationery.jpg'
@@ -11,6 +11,7 @@ featuredImage: './stationery.jpg'
 While this post focuses on the specific use case of building an ECommerce application, the services and features I will showcase are the building blocks for most all real-world production applications, so I hope you will find it useful.
  ![](./logo.png)
 ###Laying the groundwork
+
 For this site, I've chosen to use [Gatsby](https://gatsbyjs.org/) in order to get the benefits of a static site, including better performance, better SEO, and cheaper / easier scalability. Next.js (React) and Nuxt (Vue) are other options that would do the job just as well, but I've gone with Gatsby because of my previous experience with it as well as the robust developer community and documentation available at the time of this writing.
 
 The app we will be building has the following features:
@@ -34,7 +35,9 @@ Based on these features, we can assume that the app will have the following requ
 To build out these features on both the front and the back end we will be using the Amplify Framework:
 
 **Amplify CLI**- for creating and configuring AWS services
+
 **Amplify Client**- libraries for interacting with the services
+
 **Amplify Console** - to host and view the app and features after they are deployed.
 
 Let’s start building!
@@ -42,6 +45,7 @@ Let’s start building!
 To follow along with this tutorial, you need to have an AWS account (sign up here)[https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/]
 
 ##Getting started
+
 To get started, clone the [Gatsby JAMstack ECommerce starter project](https://github.com/jamstack-cms/jamstack-ecommerce) that will serve as the base of the application we'll be building:
 
 ```
@@ -77,6 +81,7 @@ This is not ideal though because keeping up with everything locally is hard to s
 To do so, we'll need to set up an API. To start, create the Amplify project so we can begin migrating the inventory provider to a real back end provider.
 
 ##Installing Amplify and initializing an Amplify project
+
 Before you can use Amplify, you'll first need to have or [create an AWS Account](https://aws.amazon.com/resources/create-account/).
 
 Next, install the Amplify CLI globally from the command line:
@@ -95,6 +100,7 @@ $ amplify configure
 This will walk you through the steps to create and configure AWS user credentials locally. For a guided walkthrough of these configuration steps, check out this [video](https://www.youtube.com/watch?v=n4DuYTzpvdE).
 
 ##Creating the Amplify project
+
 After the CLI has been configured you can create a new Amplify project:
 ```
 $ amplify init
@@ -114,7 +120,9 @@ $ amplify init
 After the initialization has been completed, you should now see 2 artifacts created for you in your project directory:
 
 **1.src/aws-exports.** - This file will hold the key value pairs of the resource information for the services created by the CLI.
+
 **2.amplify directory - This will hold the back end code we write for things like GraphQL schemas and serverless functions managed by the AWS services we'll be using.
+
 Now that we have the base project set up, let's also go ahead and install the AWS Amplify client library:
 ```
 $ npm install aws-amplify
@@ -124,9 +132,11 @@ $ npm install aws-amplify
 $ yarn add aws-amplify
 ```
 ##Creating the back end services
+
 Now we are ready to go and can start creating the services we'll be integrating into the app. Let's first start with authentication.
 
 ###Authentication
+
 The authentication setup for this app will need to accomplish the following things:
 
 Enable users to sign up and sign in
@@ -194,5 +204,6 @@ Update the adminEmails array to include the emails you'd like to allow Admin acc
 This function will add a user to the Admin group if their email is included in the adminEmails array.
 
 ##Storage
+
 Next, let's create the image storage service using Amazon S3:
 
