@@ -107,14 +107,16 @@ Unlike token-based authentication, JWTs are not stored in the application's data
 ## Project set up
 Before proceeding, let's take a look at some of the endpoints we'll be utilizing in this section.
 
+
 | Endpoint   | Description  |
 --- | --- | 
-/auth/users/  |  Register a new user                                                         |
-/auth/users/me/	 | retrieve/update the currently logged in user                                |
-/auth/jwt/create/ | create a JWT by passing a valid user in the post request to this endpoint   |
-/auth/jwt/refresh/	| get a new JWT once the lifetime of the previously generated one expires     |
-/api/accounts/all-profiles/ |	get all user profiles and create a new one                                 |
+/auth/users/  |  Register a new user                                                         
+/auth/users/me/	 | retrieve/update the currently logged in user                                
+/auth/jwt/create/ | create a JWT by passing a valid user in the post request to this endpoint   
+/auth/jwt/refresh/	| get a new JWT once the lifetime of the previously generated one expires     
+/api/accounts/all-profiles/ |	get all user profiles and create a new one                                 
 /api/accounts/profile/id/  | detail view of a user's profile   
+
 
 |      Endpoint              |           Description                                                       |
 |----------------------------|:---------------------------------------------------------------------------:|
@@ -290,11 +292,8 @@ class userProfileDetailView(RetrieveUpdateDestroyAPIView):
 ```
 
 Each API view is linked to the serializer class we had previously created.
-One thing we notice is the
-
-`perform_create`
-
-method in the `UserProfileListCreateView` class. This is how we indicate how we want to create the serializer. In this case, we wanted to populate the read_only user field with the requesting user then populate the serializer with this value.
+One thing we notice is the `perform_create` method in the `UserProfileListCreateView` class. 
+This is how we indicate how we want to create the serializer. In this case, we wanted to populate the `read_only` user field with the requesting user then populate the serializer with this value.
 
 The views are then linked to a URL endpoint in the app's urls.py file:
 
@@ -313,10 +312,10 @@ urlpatterns = [
 ```
 
 ## Permissions
-Permissions determine whether a request should be granted or denied access.
-Django rest framework ships with several. I won't get into those as it's documentation is quite comprehensive about them. However, let's draw our attention to the
 
-`IsOwnerProfileOrReadOnly`  permission class.
+Permissions determine whether a request should be granted or denied access.
+Django rest framework ships with several. I won't get into those as it's documentation is quite comprehensive about them.
+However, let's draw our attention to the `IsOwnerProfileOrReadOnly`  permission class.
 
 This is a custom permission implementation. We'll initialize a permission.py file and populate it with the code below:
 
@@ -420,20 +419,24 @@ eventScheduler
 ![](./1.png)
 
 Get access token
+
 ![AccessToken](./2.png)
 
 ### Retrieve/update the authenticated user.
 
 We'll be passing the get request as the user Batman. To do this, every post request must have a JWT to identify the user as a valid user. In post man, we can place the token in the auth section and indicating you want to use a Bearer token. You'll then paste in the access token generated above.
+
 ![CurrentUser](./3.png)
 
 ### Get all user Profiles
 This will be through a GET request.
+
 ![Profiles](./4.png)
 
-##Update authenticated User
+## Update authenticated User
 
-##Through a PUT request
+### Through a PUT request
+
 ![Update Profile](./5.png)
 
 That's the end of this looong post 👀. I hope with this information you too can make your own RESTful API with django.
