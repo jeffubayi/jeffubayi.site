@@ -78,9 +78,9 @@ const ProjectsPage = () => (
 					 a mini version of Eventbrite or meetup.com.
 				</p>
 				<p>
-				    Build using Python, Django and Django Rest-Framework. 
+				    Built using Python, Django and Django Rest-Framework. 
 					Here is a <Link to="https://www.jeffubayi.site/blog/gatsby">tutorial</Link> on how I set up the JSON API 
-					and tested the endpoints and tested them on  postman.
+					and tested the endpoints on postman.
 				</p>
 				<p>
 				   Allows users to create outdoor events and other users to register as attendees.
@@ -114,7 +114,8 @@ const ProjectsPage = () => (
 							display: 'inline-block',
 							margin: 'auto',
 							verticalAlign: 'middle',
-							width: 150,
+							width: 250,
+							height: 70,
 						}}
 					/>{' '}
 					Macrina
