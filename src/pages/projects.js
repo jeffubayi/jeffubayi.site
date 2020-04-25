@@ -35,7 +35,8 @@ const ProjectsPage = () => (
 		<Projects>
 			<section>
 				<h3>
-					<QueryImage name="naiblog" width={400} />{''}
+					<QueryImage name="naiblog" width={400} />
+					{''}
 					<Link to="https://naiblog.xyz"> NaiBlog.xyz</Link>
 				</h3>
 				<p>
