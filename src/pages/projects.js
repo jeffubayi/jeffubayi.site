@@ -63,7 +63,7 @@ const ProjectsPage = () => (
 			<WaveSection as="section">
 				<h3>
 					<QueryImage
-						name="harmony"
+						name="python"
 						style={{
 							display: 'inline-block',
 							marginRight: '10px',
@@ -71,39 +71,35 @@ const ProjectsPage = () => (
 							width: 64,
 						}}
 					/>{' '}
-					Harmony
+					Event Scheduler
 				</h3>
 				<p>
-					Harmony is a Chrome extension which simplifies the Discord
-					interface and adds some useful features.
+				     An event scheduler application, sort of like 
+					 a mini version of Eventbrite or meetup.com.
 				</p>
 				<p>
-					Discord is a chat application (primarily aimed at gamers)
-					which is used by some major subsections of the programming
-					community. I'm an active member of several of these
-					servers—most notably{' '}
-					<Link to="https://www.reactiflux.com">Reactiflux</Link>—and
-					as a result use Discord daily.
+				    Build using Python, django and Django Rest-Framework. The application renders a JSON api endpoint
+					for front-end clients.  
+					Here is a<Link to="https://www.jeffubayi.site/blog/gatsby">tutorial</Link>on how I set up the project 
+					and tested the endpoints to postman.
 				</p>
 				<p>
-					The Discord interface has some bugs and slight annoyances
-					which regularly get in the way, and some useful features
-					which would be easy to implement are currently missing.
-					Harmony has been a great way to explore how Chrome
-					extensions are structured while solving these everyday
-					problems!
+				   Allows users to create outdoor events and other users to register as attendees.
+				   Key features of the application are, users to create events and other registered users can mark attendance to the created events.
+				   I also explored how to review an event, putting in place checks to ensure only those members who attended the event can review any given event. 
+				
 				</p>
 				<Small>
 					<Link
-						to="https://chrome.google.com/webstore/detail/harmony/jaaoemgmljmlgmpailnhdikgbpffhkkd"
+						to="https://www.jeffubayi.site/blog/gatsby"
 						secondary
 						button
 					>
-						Web Store
+						Blog
 					</Link>
 					&nbsp;
 					<Link
-						to="https://github.com/thisRaptori/harmony"
+						to="https://github.com/jeffubayi/Events-Organizer"
 						secondary
 						button
 					>
