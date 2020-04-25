@@ -82,12 +82,12 @@ const ProjectsPage = () => (
 				</p>
 				<p>
 				    Built using Python, Django and Django Rest-Framework. 
-					Here is a <Link to="https://www.jeffubayi.site/blog/gatsby">tutorial</Link> on how I set up the JSON API 
+					Here is a <Link to="https://www.jeffubayi.site/blog/Python-event-api">tutorial</Link> on how I set up the JSON API 
 					and tested the endpoints on postman.
 				</p>
 				<Small>
 					<Link
-						to="https://www.jeffubayi.site/blog/gatsby"
+						to="https://www.jeffubayi.site/blog/Python-event-api"
 						secondary
 						button
 					>
