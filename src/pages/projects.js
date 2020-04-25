@@ -69,7 +69,7 @@ const ProjectsPage = () => (
 							margin: 'auto',
 							verticalAlign: 'middle',
 							width: 250,
-							height: 70,
+							height: 120,
 						}}
 					/>{' '}
 					Event Scheduler
@@ -109,7 +109,7 @@ const ProjectsPage = () => (
 
 			<section>
 			<h3>
-					<QueryImage name="logo2" width={300} />{' '}
+					<QueryImage name="logo2" width={400} />{' '}
 					Macrina
 				</h3>
 
