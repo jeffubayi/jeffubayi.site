@@ -36,7 +36,7 @@ const ProjectsPage = () => (
 			<section>
 				<h3>
 					<QueryImage name="naiblog" width={400} />{''}
-					<Link to="https://naiblog,xyz">NaiBlog.xyz</Link>
+					<Link to="https://naiblog.xyz"> NaiBlog.xyz</Link>
 				</h3>
 				<p>
 					A blog site with relative social articles. Inspired by the Netflix app features,
