@@ -78,15 +78,13 @@ const ProjectsPage = () => (
 					 a mini version of Eventbrite or meetup.com.
 				</p>
 				<p>
-				    Build using Python, django and Django Rest-Framework. The application renders a JSON api endpoint
-					for front-end clients.  
-					Here is a<Link to="https://www.jeffubayi.site/blog/gatsby">tutorial</Link>on how I set up the project 
-					and tested the endpoints to postman.
+				    Build using Python, Django and Django Rest-Framework. 
+					Here is a <Link to="https://www.jeffubayi.site/blog/gatsby">tutorial</Link> on how I set up the JSON API 
+					and tested the endpoints and tested them on  postman.
 				</p>
 				<p>
 				   Allows users to create outdoor events and other users to register as attendees.
-				   Key features of the application are, users to create events and other registered users can mark attendance to the created events.
-				   I also explored how to review an event, putting in place checks to ensure only those members who attended the event can review any given event. 
+				   I explored how to review an event, putting in place checks to ensure only those members who attended the event can review any given event. 
 				
 				</p>
 				<Small>
@@ -109,11 +107,22 @@ const ProjectsPage = () => (
 			</WaveSection>
 
 			<section>
-				<h3>SaurusSims</h3>
+			<h3>
+					<QueryImage
+						name="logo2"
+						style={{
+							display: 'inline-block',
+							margin: 'auto',
+							verticalAlign: 'middle',
+							width: 150,
+						}}
+					/>{' '}
+					Macrina
+				</h3>
+
 				<p>
-					My wife creates content for the Sims 4—custom clothes,
-					hairs, objects, etc—and shares her creations with the game's
-					community.
+					My girl sells designer women clothes,
+					shoes, sweaters, etc—and shares her stock with her online instagram followers.
 				</p>
 				<p>
 					The Sims 4 creator community is mostly active on Tumblr, so
