@@ -64,23 +64,13 @@ const ProjectsPage = () => (
 			<WaveSection as="section">
 				<h3>{' '}
 					Event Scheduler
-				<QueryImage
-						name="python"
-						style={{
-							display: 'inline-block',
-							margin: 'auto',
-							verticalAlign: 'middle',
-							width: 250,
-							height: 110,
-						}}
-					/>
+					<QueryImage name="python" width={200} />
+				
 				</h3>
 				<p>
 				     An event scheduler application, sort of like 
 					 a mini version of Eventbrite or meetup.com. Allows users 
 					 to create outdoor events and other users to register as attendees.
-				</p>
-				<p>
 				    Built using Python, Django and Django Rest-Framework. 
 					Here is a <Link to="https://www.jeffubayi.site/blog/Python-event-api">tutorial</Link> on how I set up the JSON API 
 					and tested the endpoints on postman.
