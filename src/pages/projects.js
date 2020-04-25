@@ -35,7 +35,8 @@ const ProjectsPage = () => (
 		<Projects>
 			<section>
 				<h3>
-					<QueryImage name="naiblog" width={300} />
+					<QueryImage name="naiblog" width={400} />{''}
+					<Link to="https://naiblog,xyz">NaiBlog.xyz</Link>
 				</h3>
 				<p>
 					A blog site with relative social articles. Inspired by the Netflix app features,
@@ -69,7 +70,7 @@ const ProjectsPage = () => (
 							margin: 'auto',
 							verticalAlign: 'middle',
 							width: 250,
-							height: 120,
+							height: 110,
 						}}
 					/>{' '}
 					Event Scheduler
