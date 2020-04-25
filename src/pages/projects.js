@@ -34,7 +34,7 @@ const ProjectsPage = () => (
 
 		<Projects>
 			<section>
-				<h3><Link to="https://naiblog.xyz"> NaiBlog.xyz</Link>{''}
+				<h3><Link to="https://naiblog.xyz"> NaiBlog</Link>{''}
 					<QueryImage name="naiblog" width={300} />
 				
 				</h3>
@@ -62,7 +62,8 @@ const ProjectsPage = () => (
 			</section>
 
 			<WaveSection as="section">
-				<h3>
+				<h3>{' '}
+					Event Scheduler
 				<QueryImage
 						name="python"
 						style={{
@@ -72,8 +73,7 @@ const ProjectsPage = () => (
 							width: 250,
 							height: 110,
 						}}
-					/>{' '}
-					Event Scheduler
+					/>
 				</h3>
 				<p>
 				     An event scheduler application, sort of like 

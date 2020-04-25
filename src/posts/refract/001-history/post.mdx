@@ -71,7 +71,7 @@ export default App;
 
 If you never learned ES6 before, you'd think that this class statement is a feature of React. It's actually a new feature of ES6, and that's why learning ES6 properly would enable you to understand React code better. We'll start with ES6 classes.
 
-## 1.ES6 Classes
+## 1. ES6 Classes
 
 ES6 introduced class syntax that is used in similar ways to OO language like Java or Python. A basic class in ES6 would look like this:
 
@@ -128,7 +128,7 @@ jeff.hello(); // Hello World! I am Jeff and I am a REACT developer
 
 There you go. The hello method from Developer class has been overridden.
 
-##Use in React
+#### Use in React
 
 Now that we understand ES6 class and inheritance, we can understand the React class defined in src/app.js. This is a React component, but it's actually just a normal ES6 class which inherits the definition of React Component class, which is imported from the React package.
 ```javascript
@@ -145,7 +145,7 @@ class App extends Component {
 ```
 This is what enables us to use the render() method, JSX, this.state, other methods. All of this definitions are inside the Component class. But as we will see later, class is not the only way to define React Component. If you don't need state and other lifecycle methods, you can use a function instead.
 
-## 2.Declaring variables with ES6 let and const
+## 2. Declaring variables with ES6 let and const
 
 Because JavaScript var keyword declares variable globally, two new variable declarations were introduced in ES6 to solve the issue, namely let and const. They are all the same, in which they are used to declare variables. The difference is that const cannot change its value after declaration, while let can. Both declarations are local, meaning if you declare let inside a function scope, you can't call it outside of the function.
 
@@ -179,7 +179,7 @@ class App extends Component {
 
 Since greeting won't change in the entire application lifecycle, we define it using const here.
 
-## 3.The arrow function
+## 3. The arrow function
 
 Arrow function is a new ES6 feature that's been used almost widely in modern codebases because it keeps the code concise and readable. This feature allows us to write functions using shorter syntax
 ```javascript
@@ -210,7 +210,7 @@ const singleParam = firstName => {
 }
 ```
 
-### Implicit return
+#### Implicit return
 
 If your arrow function is only one line, you can return values without having to use the return keyword and the curly brackets {}
 ```javascript
@@ -236,20 +236,20 @@ class HelloWorld extends Component {
 ```
 Using arrow function in your React application makes the code more concise. But it will also remove the use of state from your component. This type of component is known as stateless functional component. You'll find that name in many React tutorials.
 
-## 4.Destructuring assignment for arrays and objects
+## 4. Destructuring assignment for arrays and objects
 One of the most useful new syntax introduced in ES6, destructuring assignment is simply copying a part of object or array and put them into named variables. A quick example:
 ```javascript
 const developer = {
-  firstName: 'Nathan',
-  lastName: 'Sebhastian',
+  firstName: 'Jeff',
+  lastName: 'Ubayi',
   developer: true,
-  age: 25,
+  age: 23,
 }
 
 //destructure developer object
 const { firstName, lastName } = developer;
-console.log(firstName); // returns 'Nathan'
-console.log(lastName); // returns 'Sebhastian'
+console.log(firstName); // returns 'Jeff'
+console.log(lastName); // returns 'Ubayi'
 console.log(developer); // returns the object
 ```
 As you can see, we assigned firstName and lastName from developer object into new variable firstName and lastName. Now what if you want to put firstName into a new variable called name?
@@ -284,7 +284,7 @@ const HelloWorld = ({ hello }) => {
 }
 ```
 
-## 5.Map and filter
+## 5. Map and filter
 Although this tutorial focuses on ES6, JavaScript array map and filter methods need to be mentioned since they are probably one of the most used ES5 features when building React application. Particularly on processing data.
 These two methods are much more used in processing data. For example, imagine a fetch from API result returns an array of JSON data:
 
@@ -326,7 +326,7 @@ We can also filter the data in the render.
 </ul>
 ```
 
-## 6.ES6 module system
+## 6. ES6 module system
 
 The ES6 module system enables JavaScript to import and export files. Let's see the src/app.js code again in order to explain this.
 ```javascript
