@@ -21,11 +21,11 @@ You'll find the project's code my [github](https://github.com/jeffubayi/Events-O
 
 I'll try to follow a similar structure in this. This will mainly involve:
 
-  1. Model creation.
-  2. Serializers, API views and modifying them to suit our needs.
-  3. Creating permission classes for our endpoints.
-  4. Writing automated unit tests for the endpoints.
-  5. Demo with postman.
+    1. Model creation.
+    2. Serializers, API views and modifying them to suit our needs.
+    3. Creating permission classes for our endpoints.
+    4. Writing automated unit tests for the endpoints.
+    5. Demo with postman.
 
 ## Project setup
 
@@ -34,15 +34,15 @@ Next, we'll need to make virtual environments for installing project dependencie
 
 Install virtualenv
 
- `pip install virtualenv`
+     `pip install virtualenv`
 
 Create a new virtualenv
 
- `virtualenv yourenvname -p python3.6`
+     `virtualenv yourenvname -p python3.6`
 
 Activate virtual environment
 
-`source yourenvname/bin/activate`
+     `source yourenvname/bin/activate`
 
 Run this command within the directory the virtual environment was created in.
 
@@ -50,28 +50,28 @@ Run this command within the directory the virtual environment was created in.
 
 1. Django and the Django rest framework
 
- `pip install django djangorestframework`
+     `pip install django djangorestframework`
 
 2. Djoser: REST implementation of Django authentication system. The Djoser library provides a set of Django Rest Fr amework views and endpoints to handle basic actions such as registration, login, logout, password reset, and account activation
 
- `pip install djoser`
+      `pip install djoser`
 
 3. django-rest-framework-simplejwt: provides a JSON Web Token authentication backend for the Django REST Framework.
 
-`pip install djangorestframework_simplejwt`
+     `pip install djangorestframework_simplejwt`
 
 Typically, if you have a lot of project dependencies in python, it's advisable to put them in a requirements.txt file and install them with one command.
 
-`pip install -r requirements.txt`
+     `pip install -r requirements.txt`
 
 To kick off the new django project, run the following once you've activated the previously created virtual environment.
 
-`django-admin startproject eventScheduler`
+     `django-admin startproject eventScheduler`
 
 Now to start with the first app that we'll be requiring for the next section:
 
-`cd eventScheduler`
-`python manage.py startapp accounts `
+     `cd eventScheduler`
+     `python manage.py startapp accounts `
 
 If you've followed the steps along, our app should now be having its structure as
 
@@ -116,16 +116,6 @@ Before proceeding, let's take a look at some of the endpoints we'll be utilizing
 /auth/jwt/refresh/	| get a new JWT once the lifetime of the previously generated one expires     
 /api/accounts/all-profiles/ |	get all user profiles and create a new one                                 
 /api/accounts/profile/id/  | detail view of a user's profile   
-
-
-|      Endpoint              |           Description                                                       |
-|----------------------------|:---------------------------------------------------------------------------:|
-|/auth/users/	             | Register a new user                                                         |
-|/auth/users/me/	         | retrieve/update the currently logged in user                                |
-|/auth/jwt/create/	         | create a JWT by passing a valid user in the post request to this endpoint   |
-|/auth/jwt/refresh/	         | get a new JWT once the lifetime of the previously generated one expires     |
-|/api/accounts/all-profiles/ |	get all user profiles and create a new one                                 |
-|/api/accounts/profile/id/	 | detail view of a user's profile                                             |
 
 
 Those may seem like a handful but the good news is that djoser has done most of the heavy lifting for us. All the endpoints starting with auth are djoser generated.
@@ -412,7 +402,7 @@ eventScheduler
 └── manage.py
 ```
 
-## Demo with postman
+## 5.Demo with postman
 
 ### User registration
 
