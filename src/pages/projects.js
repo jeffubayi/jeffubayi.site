@@ -34,10 +34,9 @@ const ProjectsPage = () => (
 
 		<Projects>
 			<section>
-				<h3>
+				<h3><Link to="https://naiblog.xyz"> NaiBlog.xyz</Link>{''}
 					<QueryImage name="naiblog" width={400} />
-					{''}
-					<Link to="https://naiblog.xyz"> NaiBlog.xyz</Link>
+				
 				</h3>
 				<p>
 					A blog site with relative social articles. Inspired by the Netflix app features,
