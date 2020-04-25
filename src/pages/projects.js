@@ -35,7 +35,7 @@ const ProjectsPage = () => (
 		<Projects>
 			<section>
 				<h3><Link to="https://naiblog.xyz"> NaiBlog.xyz</Link>{''}
-					<QueryImage name="naiblog" width={400} />
+					<QueryImage name="naiblog" width={300} />
 				
 				</h3>
 				<p>
@@ -105,9 +105,10 @@ const ProjectsPage = () => (
 			</WaveSection>
 
 			<section>
-			<h3>
-					<QueryImage name="logo2" width={400} />{' '}
-					Macrina
+			<h3>    
+			        <Link to=""> Macrina</Link>{''}
+					<QueryImage name="logo2" width={300} />{' '}
+					
 				</h3>
 
 				<p>
