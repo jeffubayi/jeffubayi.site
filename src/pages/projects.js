@@ -77,17 +77,13 @@ const ProjectsPage = () => (
 				</h3>
 				<p>
 				     An event scheduler application, sort of like 
-					 a mini version of Eventbrite or meetup.com.
+					 a mini version of Eventbrite or meetup.com. Allows users 
+					 to create outdoor events and other users to register as attendees.
 				</p>
 				<p>
 				    Built using Python, Django and Django Rest-Framework. 
 					Here is a <Link to="https://www.jeffubayi.site/blog/gatsby">tutorial</Link> on how I set up the JSON API 
 					and tested the endpoints on postman.
-				</p>
-				<p>
-				   Allows users to create outdoor events and other users to register as attendees.
-				   I explored how to review an event, putting in place checks to ensure only those members who attended the event can review any given event. 
-				
 				</p>
 				<Small>
 					<Link
