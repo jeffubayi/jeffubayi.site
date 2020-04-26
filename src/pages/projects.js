@@ -110,7 +110,7 @@ const ProjectsPage = () => (
 					Built with Gatsby,the application uses stripe for payments and has a full functional eccomerce feature.
 					Its a JAMstack Ecommerce store and I used AWS(amplify) to deploy it. Authentication was through AWS cognito and lambda functions.
 					
-					Here is a [tutorial](https://www.jeffubayi.site/blog/gatsby) on how I deployed it serverless.
+					Here is a <Link to="https://www.jeffubayi.site/blog/gatsby">tutorial</Link> on how I deployed it serverless.
 				</p>
 				
 				<Small>
@@ -133,7 +133,7 @@ const ProjectsPage = () => (
 			
 				<p>
 					Project implementing Safaricom Lipa na Mpesa.
-                    Built with Python, the application connects to [Daraja API](https://developer.safaricom.co.ke/docs)
+                    Built with Python, the application connects to <Link to="https://developer.safaricom.co.ke/docs">Daraja API</Link> to enable transaction from a registered number.
                     
 				</p>
 				<small>
