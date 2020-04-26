@@ -106,24 +106,13 @@ const ProjectsPage = () => (
 					shoes, sweaters, etc—and shares her stock with her online instagram followers.
 				</p>
 				<p>
-					The Sims 4 creator community is mostly active on Tumblr, so
-					she primarily posts her content there. She wasn't happy with
-					any of the existing Tumblr themes, so she asked me to create
-					one for her.
+					So I decided to create an online store that can enable the order and purchase of cloths from anywhere.
+					Built with Gatsby,the application uses stripe for payments and has a full functional eccomerce feature.
+					Its a JAMstack Ecommerce store and I used AWS(amplify) to deploy it. Authentication was through AWS cognito and lambda functions.
+					
+					Here is a [tutorial](https://www.jeffubayi.site/blog/gatsby) on how I deployed it serverless.
 				</p>
-				<p>
-					At first, I tried to avoid the awkward Tumblr theme template
-					system by building a React app which consumed Tumblr's API.
-					Unfortunately her blog is too popular, and her followers
-					were regularly unable to access it due to rate limiting on
-					the API!
-				</p>
-				<p>
-					As a result, I started again and re-created the same design
-					as a plain Tumblr theme. Some extra non-Tumblr functionality
-					was rebuilt into vanilla JavaScript, fetching data directly
-					from Contentful's API.
-				</p>
+				
 				<Small>
 					<Link to="https://saurussims.tumblr.com/" secondary button>
 						Website
@@ -140,63 +129,41 @@ const ProjectsPage = () => (
 			</section>
 
 			<WaveSection as="section">
-				<h3>Midnight Sun</h3>
+				<h3>Pay App</h3>
+			
 				<p>
-					My wife and I worked together in our spare time over the
-					course of a couple of years to build an online game, and
-					managed the community which grew around it.
+					Project implementing Safaricom Lipa na Mpesa.
+                    Built with Python, the application connects to [Daraja API](https://developer.safaricom.co.ke/docs)
+                    
 				</p>
-				<p>
-					The game was a text-and-graphics based RPG where users were
-					given superpowers, and included a host of different features
-					to keep them engaged. The core was a real-time multiplayer
-					battle system, complete with non-player characters governed
-					by a complex algorithm determining how they would interact
-					with real users.
-				</p>
-				<p>
-					Users were able to choose from 32 superpowers, ranging from
-					simple (such as telekinesis, pyrokinesis, or superhuman
-					strenth), through to complex (mind control, power
-					absorption, time manipuation, and so on). These were all
-					painstakingly balanced and fully realised, with a huge
-					variety of capabilities and effects.
-				</p>
-				<p>
-					The backend was written in PHP; the frontend was written as
-					vanilla CSS/HTML with a custom DOM manipulation system built
-					using jQuery to handle interactivity.
-				</p>
+				<small>
+				    <Link
+				  		to="https://github.com/jeffubayi/payApp"
+						secondary
+						button
+					>
+						<Icon name="GitHub" /> Code
+					</Link>
+				</small>
+			
 			</WaveSection>
 
 			<section>
-				<h3>WPC Extended</h3>
+				<h3>Budget App</h3>
 				<p>
-					A WordPress plugin which provides a simplified interface for
-					adding to and updating the Customizer, bundled with several
-					custom controls and shorthands to make life easier.
-				</p>
-				<p>
-					As it's a WordPress plugin, this uses a mix of PHP, CSS, and
-					jQuery to implement extra functionality on top of the
-					WordPress platform. It makes theme customisation and
-					development significantly faster by providing a simpler and
-					more intuitive interface for adding advanced customisation
-					options to the system.
-				</p>
-				<p>
-					The plugin itself was designed to be extensible. For
-					example, the{' '}
-					<Link to="https://github.com/thisRaptori/wpc-extended-sass">
-						Automated SASS Export
-					</Link>{' '}
-					plugin injects the customisation options into a SASS
-					compiler and compiles the user's CSS on update, providing a
-					much faster and more responsive developer experience.
+					Expense tracking application that keeps you up per with your income spending.
+					Enables you to view your budget from a set value (Ksh.) and item list of expenses.
+					I initially built the application with Vanilla JS as a goal to learn some basic concepts.
+					The final web app is based of react hooks to make it more modern.
+				
 				</p>
 				<Small>
+			     	<Link to="https://naiblog.xyz/" secondary button>
+						Demo
+					</Link>
+					&nbsp;
 					<Link
-						to="https://github.com/thisRaptori/wpc-extended"
+						to="https://github.com/jeffubayi/Budget-App"
 						secondary
 						button
 					>
