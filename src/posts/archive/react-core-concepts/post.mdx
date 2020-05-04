@@ -1,0 +1,446 @@
+---
+path: '/blog/react-core-concepts'
+date: '2020-5-3'
+title: 'Learning React core concepts'
+subtitle: 'learn React basics step by step, with a look at how some logics are implemented.'
+featuredImage: './react.png'
+---
+
+
+#### 1. Core Concepts
+   - Elements and JSX
+  -  Components and Props
+ -   Lists and Keys
+ -  Events and Event Handlers
+ 
+ #### 2. React Hooks
+- State and useState
+- Side Effects and useEffect
+- Performance and useCallback
+ - Memoization and useMemo
+ - Refs and useRef
+ 
+ #  Core concepts
+### 1. Elements and JSX
+An element describes what you see on the screen
+The basic syntax for a  React element
+```javascript
+// In a nutshell, JSX allows us to write HTML in our JS
+// JSX can use any valid html tags (i.e. div/span, h1-h6, form/input, etc)
+<div>Hello React</div> 
+```
+**JSX** elements are expressions
+
+```javascript
+// as an expression, JSX can be assigned to variables...
+const greeting = <div>Hello React</div>;
+
+const isNewToReact = true;
+
+// ... or can be displayed conditionally
+function sayGreeting() {
+  if (isNewToReact) {
+    // ... or returned from functions, etc.
+    return greeting; // displays: Hello React
+  } else {
+    return <div>Hi again, React</div>;
+  }
+}
+```
+The slight difference between JSX and HTML syntax include;
+```html
+// Empty div is not <div></div> (HTML), but <div/> (JSX)
+<div/>
+
+// A single tag element like input is not <input> (HTML), but <input/> (JSX)
+<input name="email" />
+
+// Attributes are written in camelcase for JSX (like JS variables
+<button className="submit-button">Submit</button> // not 'class' (HTML)
+```
+
+  The most basic React app requires three things:
+  
+   -   1. `ReactDOM.render()` to render our app
+   -   2. A `JSX element` (called a root node in this context)
+    -   3. A `DOM element` within which to mount the app (usually a div with an id of root in an index.html file)
+
+```javascript
+// imports needed if using NPM package; not if from CDN links
+import React from "react";
+import ReactDOM from "react-dom";
+
+const greeting = <h1>Hello React</h1>;
+
+// ReactDOM.render(root node, mounting point)
+ReactDOM.render(greeting, document.getElementById("root"));
+
+```
+
+### 2. Components and Props
+Components lets you split the UI into independent, reusable pieces in isolation.
+
+####  Function and Class components
+Components are like JavaScript functions. They accept arbitrary inputs (called “props”) and return React elements describing what should appear on the screen.
+```javascript
+// Function Component
+import React from "react";
+
+function Header() {
+  // function components must be capitalized unlike normal JS functions
+  // note the capitalized name here: 'Header'
+  return <h1>Hello React</h1>;
+}
+
+// function components with arrow functions are also valid
+const Header = () => <h1>Hello React</h1>;
+```
+
+```javascript
+// Class Component
+// (classes are another type of function)
+import React from  "react";
+
+class Header extends React.Component {
+  // class components have more boilerplate (with extends and render method)
+  render() {
+    return <h1>Hello React</h1>;
+  }
+}
+
+```
+Components can be reusable across an app.
+```javascript
+// for example, this Header component can be reused in any app page
+
+// this component shown for the '/' route
+function IndexPage() {
+  return (
+    <div>
+      <Header />
+      <About />
+      <Footer />
+    </div>
+  );
+}
+
+// shown for the '/blog' route
+function AboutPage() {
+  return (
+    <div>
+      <Header />
+      <Blog />
+      <Tags />
+      <Footer />
+    </div>
+  );
+}
+```
+#### Props
+Props /`properties` are Read-only data that is passed dynamically  to components.
+```javascript
+const username = "Jeff";
+// props is the object that every component receives as an argument
+
+function Header(props) {
+  // the props we make on the component (i.e. username)
+  // become properties on the props object
+  return <h1>Hello {props.username}</h1>;
+}
+```
+
+>All React components must act like `pure functions` with respect to their props.
+That is, for every input, we be able to expect the same output
+
+
+
+
+We can also accept react components as props through  special property on the props object called 'children'.
+```javascript
+function Layout(props) {
+  return <div className="container">{props.children}</div>;
+}
+
+// The children prop is very useful for when you want the same
+// component (such as a Layout component) to wrap all other components:
+function IndexPage() {
+  return (
+    <Layout>
+      <Header />
+      <Hero />
+      <Footer />
+    </Layout>
+  );
+}
+
+// different page, but uses same Layout component (thanks to children prop)
+function AboutPage() {
+  return (
+    <Layout>
+      <About />
+      <Footer />
+    </Layout>
+  );
+}
+```
+```
+}
+
+```
+**`Fragments`** are special components for displaying multiple components without adding an extra element to the DOM
+    -   Fragments are ideal for conditional logic
+
+```javascript
+//example
+// if isAuthenticated is true, how do we display both AuthLinks and Greeting?
+function Header() {
+  const isAuthenticated = checkAuth();
+
+  return (
+    <nav>
+      <Logo />
+      {/* we can render both components with a fragment */}
+      {/* fragments are very concise: <> </> */}
+      {isAuthenticated ? (
+        <>
+          <AuthLinks />
+          <Greeting />
+        </>
+      ) : (
+        <Login />
+      )}
+    </nav>
+  );
+}
+```
+### 3. Lists and keys
+We use `map()` to convert a list of data(arrays) into lists of elements
+
+```javascript
+const people = ['Jeff', 'Bria', 'Rose'];
+const peopleList = people.map(person => {<p> {person} </p>};
+```
+Each React element iterated over needs a special **`key`** prop
+
+ -   Keys are essential for React to be able to keep track of each element that is being iterated over with map
+ -   Without keys, it is harder for it to figure out how elements should be updated when data changes
+-    Keys are unique values to represent the fact that these elements are separate from one another
+```javascript
+function App() {
+  const people = ['Jeff', 'Bria', 'Rose'];
+
+  return (
+    <ul>
+      {/* keys need to be primitive values, ideally a generated id */}
+      {people.map(person => <Person key={person} name={person} />)}
+    </ul>
+  );
+}
+
+// If you don't have ids with your set of data or unique primitive values,
+// you can use the second parameter of .map() to get each elements index
+function App() {
+  const people = ['John', 'Bob', 'Fred'];
+
+  return (
+    <ul>
+      {/* use array element index for key */}
+      {people.map((person, i) => <Person key={i} name={person} />)}
+    </ul>
+  );
+}
+```
+### 4. Events and Event Handlers
+Handling events with React elements is very similar to handling events on DOM elements
+The most essential React events to know are **`onClick `**  and  **`onChange`**
+
+-   `onClick` handles click events on JSX elements (namely buttons)
+-   `onChange` handles keyboard events (namely inputs)
+```javascript
+function App() {
+  function handleChange(event) {
+    // when passing the function to an event handler, like onChange
+    // we get access to data about the event (an object)
+    const inputText = event.target.value;
+    const inputName = event.target.name; // myInput
+    // we get the text typed in and other data from event.target
+  }
+
+  function handleSubmit() {
+    // on click doesn't usually need event data
+  }
+
+  return (
+    <div>
+      <input type="text" name="myInput" onChange={handleChange} />
+      <button onClick={handleSubmit}>Submit</button>
+    </div>
+  );
+}
+
+```
+
+# React Hooks
+### 1. State and useState
+**`State`** allows components to create and manage their own data. So unlike props, components cannot pass data with state, but they can create and manage it internally.
+```javascript
+class Test extends React.Component {    
+    constructor() {    
+        this.state = {      
+            id: 1,      
+            name: "test"    
+        };  
+    }    
+    
+    render() {    
+        return (      
+            <div>        
+              <p>{this.state.id}</p>        
+              <p>{this.state.name}</p>      
+            </div>    
+        );  
+    }
+}
+```
+By importing **`useState`** in your code you're signaling the intent to hold some kind of state inside your React component.
+
+```javascript
+
+import React {useState}from 'react';
+
+// create state variable
+// syntax: const [stateVariable] = React.useState(defaultValue);
+function App() {
+  const [language] = React.useState('javascript');
+  // we use array destructuring to declare state variable
+
+  return <div>I am learning {language}</div>;
+}
+```
+#### what happens when state changes
+A change in the state happens based on user-input or triggering an event.
+Also, React components (with state) are rendered based on the data in the state. State holds the initial information.
+
+>So when state changes, React gets informed and immediately re-renders the DOM –  `not the whole DOM, but only the component with the updated state.`
+> This is one of the reasons why React is fast.
+
+### 2. Side effects and useEffect
+
+**`useEffect`** lets us perform side effects in function components.
+
+ **`Side effects`**- are where we need to reach into the outside world. For example, fetching data from an API or working with the DOM.
+ 
+  >Side effects are actions that can change our component state in an unpredictable fashion (that have cause 'side effects').
+  
+`useEffect` accepts a callback function (called the 'effect' function), which will by default run every time there is a re-render
+> useEffect runs once our component mounts, which is the right time to perform a side effect in the component lifecycle
+
+```javascript
+// This code picks a color from the colors array
+// and makes it the background color
+function App() {
+  const [colorIndex, setColorIndex] = React.useState(0);
+  const colors = ["blue", "green", "red", "orange"];
+
+  // we are performing a 'side effect' since we are working with an API
+  // we are working with the DOM, a browser API outside of React
+  useEffect(() => {
+    document.body.style.backgroundColor = colors[colorIndex];
+  });
+  // whenever state is updated, App re-renders and useEffect runs
+
+  function handleChangeIndex() {
+    const next = colorIndex + 1 === colors.length ? 0 : colorIndex + 1;
+    setColorIndex(next);
+  }
+
+  return <button onClick={handleChangeIndex}>Change background color</button>;
+}
+
+```
+
+ To avoid executing the effect callback after each render, we provide a second argument, an empty array
+
+```javascript
+function App() {
+  ...
+  // now our button doesn't work no matter how many times we click it...
+  useEffect(() => {
+    document.body.style.backgroundColor = colors[colorIndex];
+  }, []);
+  // the background color is only set once, upon mount
+
+  // how do we not have the effect function run for every state update...
+  // but still have it work whenever the button is clicked?
+
+  return (
+    <button onClick={handleChangeIndex}>
+      Change background color
+    </button>
+  );
+}
+
+```
+
+`useEffect` lets us conditionally perform effects with the dependencies array
+ The dependencies array is the second argument and if any one of the values in the array changes, the effect function runs again
+
+```javascript
+function App() {
+  const [colorIndex, setColorIndex] = React.useState(0);
+  const colors = ["blue", "green", "red", "orange"];
+
+  // we add colorIndex to our dependencies array
+  // when colorIndex changes, useEffect will execute the effect fn again
+  useEffect(() => {
+    document.body.style.backgroundColor = colors[colorIndex];
+    // when we use useEffect, we must think about what state values
+    // we want our side effect to sync with
+  }, [colorIndex]);
+
+  function handleChangeIndex() {
+    const next = colorIndex + 1 === colors.length ? 0 : colorIndex + 1;
+    setColorIndex(next);
+  }
+
+  return <button onClick={handleChangeIndex}>Change background color</button>;
+}
+
+```
+
+-   Fetching data with useEffect 
+> Note that handling promises with the more concise async/await syntax requires creating a separate function (Why? The effect callback function cannot be async)
+
+```javascript
+const endpoint = "https://api.github.com/users/codeartistryio";
+
+// with promises:
+function App() {
+  const [user, setUser] = React.useState(null);
+
+  React.useEffect(() => {
+    // promises work in callback
+    fetch(endpoint)
+      .then(response => response.json())
+      .then(data => setUser(data));
+  }, []);
+}
+
+// with async / await syntax for promise:
+function App() {
+  const [user, setUser] = React.useState(null);
+  // cannot make useEffect callback function async
+  React.useEffect(() => {
+    getUser();
+  }, []);
+
+  // instead, use async / await in separate function, then call
+  // function back in useEffect
+  async function getUser() {
+    const response = await fetch("https://api.github.com/codeartistryio");
+    const data = await response.json();
+    setUser(data);
+  }
+}
+```
+
