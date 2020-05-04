@@ -150,8 +150,9 @@ const ProjectsPage = () => (
 
 			<section>
 				<h3>
-				<Link to=""> Budget App</Link>{''}
-					<QueryImage name="Budgety" width={300} />{' '}
+
+				    <Link to=""> Budget App</Link>{''}
+					    <QueryImage name="budgety" width={300} />{' '}
 				</h3>
 				<p>
 					Expense tracking application that keeps you up per with your income spending.
