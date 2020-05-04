@@ -149,16 +149,19 @@ const ProjectsPage = () => (
 			</WaveSection>
 
 			<section>
-				<h3>Budget App</h3>
+				<h3>
+				<Link to=""> Budget App</Link>{''}
+					<QueryImage name="Budgety" width={300} />{' '}
+				</h3>
 				<p>
 					Expense tracking application that keeps you up per with your income spending.
 					Enables you to view your budget from a set value (Ksh.) and item list of expenses.
 					I initially built the application with Vanilla JS as a goal to learn some basic concepts.
-					The final web app is based of react hooks to make it more modern.
+					The final web app is  [here](https://github.com/jeffubayi/Budgety) based of react hooks to make it more modern.
 				
 				</p>
 				<Small>
-			     	<Link to="https://naiblog.xyz/" secondary button>
+			     	<Link to="https://budget-yako.netlify.app/" secondary button>
 						Demo
 					</Link>
 					&nbsp;
