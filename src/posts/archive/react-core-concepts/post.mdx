@@ -2,13 +2,13 @@
 path: '/blog/react-core-concepts'
 date: '2020-05-03'
 title: 'React core concepts: cheat sheet'
-subtitle: 'React is a JavaScript library that aims to simplify development of visual interface and manage its state at any point in time, by dividing the UI into a collection of components.'
+subtitle: 'React is a JavaScript library that aims to simplify development of visual interfaces and its state at any point in time, by dividing the UI into a collection of components.'
 featuredImage: './react.png'
 ---
 
 ![](https://media.giphy.com/media/eNAsjO55tPbgaor7ma/giphy.gif)
 
-#### Quick React project setup
+### Quick React project setup
 
 **`create-react-app`** is a project aimed at getting you up to speed with React in no time, and any React app that needs to outgrow a single page will find that create-react-app meets that need.
        
@@ -24,13 +24,13 @@ Navigate to **`localhost 3000`**
 
 Here is a walkthrough on some fundamentals concepts to get you started with this awesome library
 
-#### 1. Core Concepts
+### 1. Core Concepts
    - Elements and JSX
   -  Components and Props
  -   Lists and Keys
  -  Events and Event Handlers
  
-#### 2. React Hooks
+### 2. React Hooks
 - State and useState
 - Side Effects and useEffect
 - Performance and useCallback
@@ -174,6 +174,7 @@ That is, for every input, we be able to expect the same output
 
 We can also accept react components as props through  special property on the props object called 'children'.
 ```javascript
+
 function Layout(props) {
   return <div className="container">{props.children}</div>;
 }
@@ -199,8 +200,6 @@ function AboutPage() {
     </Layout>
   );
 }
-```
-```
 }
 
 ```
