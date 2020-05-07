@@ -96,8 +96,8 @@ const ProjectsPage = () => (
 
 			<section>
 			<h3>    
-			        <Link to=""> Macrina</Link>{''}
-					<QueryImage name="logo2" width={300} />{' '}
+			        <Link to="https://macrina.netlify.app/"> Macrina</Link>{''}
+					<QueryImage name="macrina" width={300} />{' '}
 					
 				</h3>
 
@@ -106,16 +106,15 @@ const ProjectsPage = () => (
 					shoes, sweaters, etc—and shares her stock with her online instagram followers.
 				</p>
 				<p>
-					So I decided to create an online store that can enable the order and purchase of cloths from anywhere.
-					Built with Gatsby,the application uses stripe for payments and has a full functional eccomerce feature.
-					Its a JAMstack Ecommerce store and I used AWS(amplify) to deploy it. Authentication was through AWS cognito and lambda functions.
-					
-					Here is a <Link to="https://www.jeffubayi.site/blog/gatsby">tutorial</Link> on how I deployed it serverless.
+				Built uitilizing React and CSS on the front end and showcases a fully functioning shopping cart.
+                The site retrieves categories and products from a [macrina API](https://github.com/jeffubayi/Macrina). 
+				Once categories and products are retrieved it caches them it local storage to give the user a quick experience.
+				Here is a <Link to="https://www.jeffubayi.site/blog/build-fullstack-apps-wih%20-react-django">tutorial</Link> of the site.
 				</p>
 				
 				<Small>
-					<Link to="https://saurussims.tumblr.com/" secondary button>
-						Website
+					<Link to="https://macrina.netlify.app/" secondary button>
+						Demo
 					</Link>
 					&nbsp;
 					<Link
@@ -158,7 +157,7 @@ const ProjectsPage = () => (
 					Expense tracking application that keeps you up per with your income spending.
 					Enables you to view your budget from a set value (Ksh.) and item list of expenses.
 					I initially built the application with Vanilla JS as a goal to learn some basic concepts.
-					The final web app is  [here](https://github.com/jeffubayi/Budgety) based of react hooks to make it more modern.
+					The final web app is [here](https://github.com/jeffubayi/Budgety) based of react hooks to make it more modern.
 				
 				</p>
 				<Small>
