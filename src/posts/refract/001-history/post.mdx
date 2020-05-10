@@ -16,432 +16,283 @@ published:
             'https://medium.com/fanduel-life/how-we-harnessed-the-power-of-reactive-programming-with-refract-a9e6568281e1',
         ],
     ]
-link: 'https://react.org'
-repo: 'https://github.com/fanduel-oss/refract'
+link: 'https://macrina.netlify.app/'
+repo: 'https://github.com/jeffubayi/Macrina'
 ---
+With the advent of Single-page applications (SPAs), it’s become increasingly common to create applications that use Django only to provide an API that 
+responds to JSON data consumed by applications developed in the most varied JavaScript frameworks.
 
-In an ideal world, you can learn all about JavaScript and web development before you dive into React. Unfortunately, we live in a not-perfect world, so chomping down on ALL of JavaScript before React will just make you bleed hard.
 
-![](./javascript.png)
+In this tutorial, we’ll put together a React app on the front end and a Django app that functions as an API for the back end.
 
-If you already have some experience with JavaScript, all you need to learn before React is just the JavaScript features you will actually use to develop React application. Things about JavaScript you should be comfortable with before learning React are:
-    - ES6 classes
-    - The new variable declaration let/const
-    - Arrow functions
-    - Destructuring assignment
-    - Map and filter
-    - ES6 module system
+![](https://miro.medium.com/max/804/1*lU33rCWoiW31simf-nWUVQ.png)
 
-It's the 20% of JavaScript features that you will use 80% of the time, so in this tutorial I will help you learn them all.
+You can expose your API in different ways with Django. While GraphQL is a safe bet, we’re going to use traditional REST endpoints.
 
-## Using Create React App
+Here is a walkthrough of parts of this tutorial;
 
-The usual case of starting to learn React is to run the create-react-app package, which sets up everything you need to run React. Then after the process is finished, opening src/app.js will present us with the only React class in the whole app:
+  1. Structure and setup
+  2. Front end
+  3. Back end
+  4. Running the app
+  5. Conclusion
 
+## 1. Structure and setup
+
+Lets build an Online cloth store app that accepts endpoints for products and category.
+
+The code is available on my [github](https://github.com/jeffubayi/Macrina) and here is the [Demo](https://macrina.netlify.app/) app.
+
+Note that we’re literally building two separate apps here.
+1. The React client
+2. The Django API server
+
+
+## 2.Front End
+
+The focus of this article is to show you how to consume a Django API quickly from a React app.
+
+Navigate to whatever directory on your machine in which you write code, create the top-level app directory called `Macrina` /or any given directory name.
+
+         mkdir Macrina-store
+
+         cd Macrina-store
+
+         npx create-react-app client
+
+         cd client
+
+         npm install axios --save
+
+> Axios is the promise-based HTTP client that we’ll use to make HTTP request calls to our Django API.
+
+Now, update the `package.json` that was created. It should look like this:
 ```javascript
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
-
-export default App;
-```
-
-If you never learned ES6 before, you'd think that this class statement is a feature of React. It's actually a new feature of ES6, and that's why learning ES6 properly would enable you to understand React code better. We'll start with ES6 classes.
-
-## 1. ES6 Classes
-
-ES6 introduced class syntax that is used in similar ways to OO language like Java or Python. A basic class in ES6 would look like this:
-
-```javascript
-class Developer {
-  constructor(name){
-    this.name = name;
-  }
-
-  hello(){
-    return 'Hello World! I am ' + this.name + ' and I am a web developer';
-  }
-}
-```
-class syntax is followed by an identifier (or simply name) that can be used to create new objects. The constructor method is always called in object initialization. Any parameters passed into the object will be passed into the new object. For example:
-
-```javascript
-var jeff = new Developer('Jeff');
-jeff.hello(); // Hello World! I am Jeff and I am a web developer
-```
-A class can define as many methods as the requirements needed, and in this case, we have the hello method which returns a string.
-
-### Class inheritance
-
-A class can extends the definition of another class, and a new object initialized from that class will have all the methods of both classes.
-```
-class ReactDeveloper extends Developer {
-  installReact(){
-    return 'installing React .. Done.';
-  }
-}
-
-var nathan = new ReactDeveloper('Nathan');
-jeff.hello(); // Hello World! I am Jeff and I am a web developer
-jeff.installReact(); // installing React .. Done.
-```
-
-The class that extends another class is usually called child class or sub class, and the class that is being extended is called parent class or super class. A child class can also override the methods defined in parent class, meaning it will replace the method definition with the new method defined. For example, let's override the hello function:
-
-```javascript
-class ReactDeveloper extends Developer {
-  installReact(){
-    return 'installing React .. Done.';
-  }
-
-  hello(){
-    return 'Hello World! I am ' + this.name + ' and I am a REACT developer';
-  }
-}
-
-var nathan = new ReactDeveloper('Jeff');
-jeff.hello(); // Hello World! I am Jeff and I am a REACT developer
-```
-
-There you go. The hello method from Developer class has been overridden.
-
-#### Use in React
-
-Now that we understand ES6 class and inheritance, we can understand the React class defined in src/app.js. This is a React component, but it's actually just a normal ES6 class which inherits the definition of React Component class, which is imported from the React package.
-```javascript
-import React, { Component } from 'react';
-
-class App extends Component {
-  // class content
-  render(){
-    return (
-      <h1>Hello React!</h1>
-    )
+{
+  "name": "Macrina-store",
+  "version": "1.0.0",
+  "description": "Modularizing",
+  "keywords": [],
+  "main": "src/index.js",
+  "dependencies": {
+    "axios": "^18.5.1",
+    "react": "16.3.2",
+    "react-dom": "16.3.2",
+    "react-jsonschema-form": "1.0.3",
+    "react-redux": "5.0.7",
+    "react-router-dom": "4.3.1",
+    "react-scripts": "1.1.4",
+    "react-spinners": "^0.3.3",
+    "redux": "4.0.0",
+    "superagent": "latest"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
 }
 ```
-This is what enables us to use the render() method, JSX, this.state, other methods. All of this definitions are inside the Component class. But as we will see later, class is not the only way to define React Component. If you don't need state and other lifecycle methods, you can use a function instead.
+First of all, In you `src/` folder create another folder called `lib`, and then `cd` and create a file `api.js`.
 
-## 2. Declaring variables with ES6 let and const
-
-Because JavaScript var keyword declares variable globally, two new variable declarations were introduced in ES6 to solve the issue, namely let and const. They are all the same, in which they are used to declare variables. The difference is that const cannot change its value after declaration, while let can. Both declarations are local, meaning if you declare let inside a function scope, you can't call it outside of the function.
+It’ll keep the url of our API:
 
 ```javascript
-const name = "Rose";
-let age = 28;
-var occupation = "Software Engineer";
-```
 
-#### Which one to use?
+import superagent from 'superagent';
 
-The rule of thumb is that declare variable using const by default. Later when you wrote the application, you'll realize that the value of const need to change. That's the time you should refactor const into let. Hopefully it will make you get used to the new keywords, and you'll start to recognize the pattern in your application where you need to use const or let.
+import * as utils from './utils.js';
 
-#### When do we use it in React?
+let base = 'https://storefront-api.herokuapp.com/api/v1';
 
-Everytime we need variables. Consider the following example:
+export const get = async payload => {
+  let url = base + '/' + Object.values(payload).join('/');
 
-```javascript
-import React, { Component } from 'react';
+  let data = await utils.fetchData(url);
+  return data;
+};
 
-class App extends Component {
-  // class content
-  render(){
-    const greeting = 'Welcome to React';
-    return (
-      <h1>{greeting}</h1>
-    )
-  }
-}
-```
-
-Since greeting won't change in the entire application lifecycle, we define it using const here.
-
-## 3. The arrow function
-
-Arrow function is a new ES6 feature that's been used almost widely in modern codebases because it keeps the code concise and readable. This feature allows us to write functions using shorter syntax
-```javascript
-// regular function
-const testFunction = function() {
-  // content..
-}
-```
-```javascript
-// arrow function
-const testFunction = () => {
-  // content..
-}
-```
-If you're an experienced JS developer, moving from the regular function syntax to arrow syntax might be uncomfortable at first. When I was learning about arrow function, I used this simple 2 steps to rewrite my functions:
-
-         1. remove function keyword
-         2. add the fat arrow symbol => after ()
-
-the parentheses are still used for passing parameters, and if you only have one parameter, you can omit the parentheses.
-```javascript
-const testFunction = (firstName, lastName) => {
-  return firstName+' '+lastName;
-}
-
-const singleParam = firstName => {
-  return firstName;
-}
-```
-
-#### Implicit return
-
-If your arrow function is only one line, you can return values without having to use the return keyword and the curly brackets {}
-```javascript
-const testFunction = () => 'hello there.';
-testFunction(); 
-```
-#### Use in React
-  
-Another way to create React component is to use arrow function. React take arrow function:
-
-```javascript
-const HelloWorld = (props) => {
-  return <h1>{props.hello}</h1>;
-}
-as equivalent to an ES6 class component
-class HelloWorld extends Component {
-  render() {
-    return (
-      <h1>{props.hello}</h1>;
-    );
-  }
-}
-```
-Using arrow function in your React application makes the code more concise. But it will also remove the use of state from your component. This type of component is known as stateless functional component. You'll find that name in many React tutorials.
-
-## 4. Destructuring assignment for arrays and objects
-One of the most useful new syntax introduced in ES6, destructuring assignment is simply copying a part of object or array and put them into named variables. A quick example:
-```javascript
-const developer = {
-  firstName: 'Jeff',
-  lastName: 'Ubayi',
-  developer: true,
-  age: 23,
-}
-
-//destructure developer object
-const { firstName, lastName } = developer;
-console.log(firstName); // returns 'Jeff'
-console.log(lastName); // returns 'Ubayi'
-console.log(developer); // returns the object
-```
-As you can see, we assigned firstName and lastName from developer object into new variable firstName and lastName. Now what if you want to put firstName into a new variable called name?
-```javascript
-const { firstName:name } = developer;
-console.log(name); // returns 'Nathan'
-```
-Destructuring also works on arrays, only it uses index instead of object keys:
-```javascript
-const numbers = [1,2,3,4,5];
-const [one, two] = numbers; // one = 1, two = 2
-You can skip some index from destructuring by passing it with ,:
-const [one, two, , four] = numbers; // one = 1, two = 2, four = 4
-```
-
-#### Use in React
-Mostly used in destructuring state in methods, for example:
-
-```javascript
-reactFunction = () => {
-  const { name, email } = this.state;
+export const put = payload => {
+  let url = `${base}/${payload.model}/${payload.data._id}`;
+  return superagent
+    .put(url)
+    .send(payload.data)
+    .then(result => result.body)
+    .catch(console.error);
 };
 ```
-Or in functional stateless component, consider the example from previous chapter:
-```javascript
-const HelloWorld = (props) => {
-  return <h1>{props.hello}</h1>;
-}
-We can simply destructure the parameter immediately:
-const HelloWorld = ({ hello }) => {
-  return <h1>{hello}</h1>;
-}
-```
-
-## 5. Map and filter
-Although this tutorial focuses on ES6, JavaScript array map and filter methods need to be mentioned since they are probably one of the most used ES5 features when building React application. Particularly on processing data.
-These two methods are much more used in processing data. For example, imagine a fetch from API result returns an array of JSON data:
+Then, let’s go to the components creation, starting by the `store.js`.
 
 ```javascript
-const users = [
-  { name: 'Nathan', age: 25 },
-  { name: 'Jack', age: 30 },
-  { name: 'Joe', age: 28 },
-];
-Then we can render a list of items in React as follows:
+import './store.css';
 
-```javascript
-import React, { Component } from 'react';
+import React from 'react';
+import * as Spinners from 'react-spinners';
 
-class App extends Component {
-  // class content
-  render(){
-    const users = [
-      { name: 'Nathan', age: 25 },
-      { name: 'Jack', age: 30 },
-      { name: 'Joe', age: 28 },
-    ];
+import * as api from '../../lib/api.js';
+import * as utils from '../../lib/utils.js';
 
-    return (
-      <ul>
-        {users
-          .map(user => <li>{user.name}</li>)
-        }
-      </ul>
-    )
+import Cart from '../cart/cart.js';
+import Categories from '../categories/categories.js';
+import Modal from '../modal/modal.js';
+import Nav from '../nav/nav.js';
+import Products from '../products/products.js';
+
+export default class Store extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cart: [],
+      loading: false,
+      showCartModal: false,
+    };
+
+    this.getProducts = this.getProducts.bind(this);
+    this.addToCart = this.addToCart.bind(this);
+    this.removeFromCart = this.removeFromCart.bind(this);
+    this.quatityOnCart = this.quatityOnCart.bind(this);
+    // this.cartTotal = this.cartTotal.bind(this);
   }
-}
-We can also filter the data in the render.
-<ul>
-  {users
-    .filter(user => user.age > 26)
-    .map(user => <li>{user.name}</li>)
+
+  // componentDidUpdate() {
+  //   console.log('__STATE__', this.state);
+  //   console.log('__CART__', this.state.cart);
+  // }
+
+  async componentWillMount() {
+    this.setState({loading: true});
+    let payload = { model: 'categories' };
+    let categories = await api.get(payload);
+
+    this.setState({ categories, loading: false});
   }
-</ul>
-```
 
-## 6. ES6 module system
+  async getProducts(e) {
+    this.setState({ loading: true });
+    let payload = { model: 'categories', id: e.target.dataset.id };
+    let category = await api.get(payload);
+    let products = category.products;
+    this.setState({ products, loading: false });
+  }
 
-The ES6 module system enables JavaScript to import and export files. Let's see the src/app.js code again in order to explain this.
-```javascript
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+  addToCart(e) {
+    let productId = e.target.id;
+    let products = this.state.products;
+    let product = null;
 
-class App extends Component {
+    products.forEach(item => {
+      if (item._id === productId) {
+        product = item;
+      }
+    });
+
+    let cart = this.state.cart || [];
+    let add = true;
+
+    cart.forEach(el => {
+      if (el.product._id === productId) {
+        add = false;
+      }
+    });
+
+    if (add) {
+      this.setState({
+        cart: [...this.state.cart, { product: product, quantity: 1 }],
+      });
+    } else {
+      alert('This product is already in your cart');
+    }
+    add = true;
+  }
+
+  removeFromCart(e) {
+    let productId = e.target.dataset.id;
+
+    let cart = this.state.cart.filter(item => item.product._id !== productId);
+    this.setState({ cart });
+  }
+  quatityOnCart(e) {
+    let productId = e.target.dataset.id;
+    let quantity = e.target.value;
+
+    let cart = [...this.state.cart];
+
+    cart.forEach(product => {
+      if (product.product._id === productId) {
+        product.quantity = quantity;
+      }
+    });
+
+    this.setState({ cart: [...cart] });
+  }
+
+  toggleCartModal = e => {
+    let targetEl = e.target.tagName;
+    targetEl === 'SECTION' || targetEl === 'BUTTON'
+      ? this.state.showCartModal ? this.setState({ showCartModal: false }) : this.setState({ showCartModal: true })
+      : null;
+  }
+
+
+
   render() {
+    let products = this.state.products || [];
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <React.Fragment>
+        {
+          this.state.showCartModal ? <Modal content={this.state.cart} toggleCartModal={this.toggleCartModal} /> : null
+        }
+        <Nav />
+        <section id="store">
+          {
+            utils.renderIf(
+              this.state.loading,
+              <div className='sweet-loading'>
+                <Spinners.BarLoader className="spinner" size={160} color={'#0a0a0a'} />
+              </div>
+            )
+          }
+          <Categories
+            categories={this.state.categories}
+            getProducts={this.getProducts}
+          />
+          {
+            utils.renderIf(
+              products && products.length, 
+              <Products products={products} addtocart={this.addToCart} />
+            )
+          }
+          <Cart
+            cart={this.state.cart}
+            changeQuantity={this.quatityOnCart}
+            removeItem={this.removeFromCart}
+            toggleCartModal={this.toggleCartModal}
+          />
+        </section>
+      </React.Fragment>
     );
   }
 }
-
-export default App;
-```
-Up at the first line of code we see the import statement:
-```javascript
-import React, { Component } from 'react';
-```
-and at the last line we see the export default statement:
-```javascript
-export default App;
-```
-To understand these statements, let's discuss about modules syntax first.
-
-A module is simply a JavaScript file that exports one or more values (can be objects, functions or variables) using the export keyword. First, create a new file named util.js in the src directory
-touch  `util.js`
-Then write a function inside it. This is a default export
-```javascript
-export default function times(x) {
-  return x * x;
-}
-```
-or multiple named exports
-```javascript
-export function times(x) {
-  return x * x;
-}
-
-export function plusTwo(number) {
-  return number + 2;
-}
-```
-Then we can import it from `src/App.js`
-
-```javascript
-import { times, plusTwo } from './util.js';
-
-console.log(times(2));
-console.log(plusTwo(3));
-You can have multiple named exports per module but only one default export. A default export can be imported without using the curly braces and corresponding exported function name:
-// in util.js
-export default function times(x) {
-  return x * x;
-}
-
-// in app.js
-import k from './util.js';
-
-console.log(k(4)); // returns 16
-But for named exports, you must import using curly braces and the exact name. Alternatively, imports can use alias to avoid having the same name for two different imports:
-// in util.js
-export function times(x) {
-  return x * x;
-}
-
-export function plusTwo(number) {
-  return number + 2;
-}
-
-// in app.js
-import { times as multiplication, plusTwo as plus2 } from './util.js';
-Import from absolute name like:
-import React from 'react';
 ```
 
-Will make JavaScript check on node_modules for the corresponding package name. So if you're importing a local file, don't forget to use the right path.
 
-#### Use in React
 
-Obviously we've seen this in the `src/App.js` file, and then in index.js file where the exported App component is being rendered. Let's ignore the serviceWorker part for now.
-`//index.js` file
 
-```javascript
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+## 3.Back End
 
-ReactDOM.render(<App />, document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
-```
-Notice how App is imported from ./App directory and the .js extension has been omitted. We can leave out file extension only when importing JavaScript files, but we have to include it on other files, such as .css. We also import another node module react-dom, which enables us to render React component into HTML element.
+## 4.Conclusion
 
-## Conclusion
-The great thing about React is that it doesn't add any foreign abstraction layer on top of JavaScript as other web frameworks. That's why React becomes very popular with JS developers. It simply uses the best of JavaScript to make building user interfaces easier and maintainable. There really is more of JavaScript than React specifix syntax inside a React application, so once you understand JavaScript better — particularly ES6 — you can write React application with confident. But it doesn't mean you have to master everything about JavaScript to start writing React app. Go and write one now, and as opportunities come your way, you will be a better developer. 
+You can access the full source code of this project [here](https://github.com/jeffubayi/Macrina).
+
+Of course, this is only one way of doing this.
+
+The good thing about using React is that you can organize your components (or even create more components out of the ones you have) in many ways to achieve the same goal.
+
+In the world of SPAs, your back-end APIs are practically fully independent from the front-end clients.
+
+This gives you the flexibility to change the whole architecture of your API (like switching from Django to Flask, for example) without any side effects to your React apps.
+
+Thanks for the Read.

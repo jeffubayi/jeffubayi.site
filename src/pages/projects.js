@@ -107,7 +107,7 @@ const ProjectsPage = () => (
 				</p>
 				<p>
 				Built uitilizing React and CSS on the front end and showcases a fully functioning shopping cart.
-                The site retrieves categories and products from a [macrina API](https://github.com/jeffubayi/Macrina). 
+				This site retrieves endpoints for categories and products from a <Link to="https://www.jeffubayi.site/blog/Python-event-api">Macrina API</Link> 
 				Once categories and products are retrieved it caches them it local storage to give the user a quick experience.
 				Here is a <Link to="https://www.jeffubayi.site/blog/build-fullstack-apps-wih%20-react-django">tutorial</Link> of the site.
 				</p>
@@ -157,7 +157,7 @@ const ProjectsPage = () => (
 					Expense tracking application that keeps you up per with your income spending.
 					Enables you to view your budget from a set value (Ksh.) and item list of expenses.
 					I initially built the application with Vanilla JS as a goal to learn some basic concepts.
-					The final web app is [here](https://github.com/jeffubayi/Budgety) based of react hooks to make it more modern.
+					The final web app is <Link to="https://www.jeffubayi.site/blog/Python-event-api">here</Link> based of react hooks to make it more modern.
 				
 				</p>
 				<Small>
