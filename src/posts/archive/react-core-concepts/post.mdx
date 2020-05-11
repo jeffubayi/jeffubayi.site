@@ -1,9 +1,9 @@
 ---
 path: '/blog/react-core-concepts'
 date: '2020-05-03'
-title: 'React core concepts: cheat sheet'
+title: 'Getting started with React core concepts'
 subtitle: 'React is a JavaScript library that aims to simplify development of visual interfaces and its state at any point in time, by dividing the UI into a collection of components.'
-featuredImage: './react.png'
+featuredImage: './learn.png'
 ---
 
 ![](https://media.giphy.com/media/eNAsjO55tPbgaor7ma/giphy.gif)
@@ -11,7 +11,6 @@ featuredImage: './react.png'
 ### Quick React project setup
 
 **`create-react-app`** is a project aimed at getting you up to speed with React in no time, and any React app that needs to outgrow a single page will find that create-react-app meets that need.
-       
        npx create-react-app todo
 
        cd todo
@@ -25,12 +24,14 @@ Navigate to **`localhost 3000`**
 Here is a walkthrough on some fundamentals concepts to get you started with this awesome library
 
 ### 1. Core Concepts
+
    - Elements and JSX
   -  Components and Props
  -   Lists and Keys
  -  Events and Event Handlers
  
 ### 2. React Hooks
+
 - State and useState
 - Side Effects and useEffect
 - Performance and useCallback
@@ -38,6 +39,7 @@ Here is a walkthrough on some fundamentals concepts to get you started with this
  - Refs and useRef
  
  #  Core concepts
+
 ### 1. Elements and JSX
 An element describes what you see on the screen
 The basic syntax for a  React element
@@ -95,9 +97,11 @@ ReactDOM.render(greeting, document.getElementById("root"));
 ```
 
 ### 2. Components and Props
+
 Components lets you split the UI into independent, reusable pieces in isolation.
 
 ####  Function and Class components
+
 Components are like JavaScript functions. They accept arbitrary inputs (called “props”) and return React elements describing what should appear on the screen.
 ```javascript
 // Function Component
@@ -154,6 +158,7 @@ function AboutPage() {
 }
 ```
 #### Props
+
 Props /`properties` are Read-only data that is passed dynamically  to components.
 ```javascript
 const username = "Jeff";
@@ -230,6 +235,7 @@ function Header() {
 }
 ```
 ### 3. Lists and keys
+
 We use `map()` to convert a list of data(arrays) into lists of elements
 
 ```javascript
@@ -267,6 +273,7 @@ function App() {
 }
 ```
 ### 4. Events and Event Handlers
+
 Handling events with React elements is very similar to handling events on DOM elements
 The most essential React events to know are **`onClick `**  and  **`onChange`**
 
@@ -298,6 +305,7 @@ function App() {
 
 # React Hooks
 ### 1. State and useState
+
 **`State`** allows components to create and manage their own data. So unlike props, components cannot pass data with state, but they can create and manage it internally.
 ```javascript
 class Test extends React.Component {    
@@ -459,4 +467,150 @@ function App() {
   }
 }
 ```
+### 3.Performance and useCallback
+
+**`useCallback`** is a hook that is used for improving our component performance
+If you have a component that re-renders frequently, `useCallback` prevents callback functions within the component from being recreated every single time the component re-renders (which mean the function component re-runs)
+  `useCallback` re-runs only when one of it's dependencies changes
+
+```javascript
+// in Timer, we are calculating the date and putting it in state a lot
+// this results in a re-render for every state update
+
+// we had a function handleIncrementCount to increment the state 'count'...
+function Timer() {
+  const [time, setTime] = React.useState();
+  const [count, setCount] = React.useState(0);
+
+  // ... but unless we wrap it in useCallback, the function is
+  // recreated for every single re-render (bad performance hit)
+  // useCallback hook returns a callback that isn't recreated every time
+  const inc = React.useCallback(
+    function handleIncrementCount() {
+      setCount(prevCount => prevCount + 1);
+    },
+    // useCallback accepts a second arg of a dependencies array like useEffect
+    // useCallback will only run if any dependency changes (here it's 'setCount')
+    [setCount]
+  );
+
+  React.useEffect(() => {
+    const timeout = setTimeout(() => {
+      const currentTime = JSON.stringify(new Date(Date.now()));
+      setTime(currentTime);
+    }, 300);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [time]);
+
+  return (
+    <div>
+      <p>The current time is: {time}</p>
+      <p>Count: {count}</p>
+      <button onClick={inc}>+</button>
+    </div>
+  );
+}
+
+```
+
+###  4. Memoization and useMemo
+
+**`useMemo`** is very similar to useCallback and is for improving performance, but instead of being for callbacks, it is for storing the results of expensive calculations
+`useMemo` allows us to 'memoize', or remember the result of expensive calculations when they have already been made for certain inputs (we already did it once for these values, so no need to do it again)
+ `useMemo` returns a value from the computation, not a callback function (but can be a function)
+
+```javascript
+// useMemo is useful when we need a lot of computing resources
+// to perform an operation, but don't want to repeat it on each re-render
+
+function App() {
+  // state to select a word in 'words' array below
+  const [wordIndex, setWordIndex] = useState(0);
+  // state for counter
+  const [count, setCount] = useState(0);
+
+  // words we'll use to calculate letter count
+  const words = ["i", "am", "learning", "react"];
+  const word = words[wordIndex];
+
+  function getLetterCount(word) {
+    // we mimic expensive calculation with a very long (unnecessary) loop
+    let i = 0;
+    while (i < 1000000) i++;
+    return word.length;
+  }
+
+  // Memoize expensive function to return previous value if input was the same
+  // only perform calculation if new word without a cached value
+  const letterCount = React.useMemo(() => getLetterCount(word), [word]);
+
+  // if calculation was done without useMemo, like so:
+
+  // const letterCount = getLetterCount(word);
+
+  // there would be a delay in updating the counter
+  // we would have to wait for the expensive function to finish
+
+  function handleChangeIndex() {
+    // flip from one word in the array to the next
+    const next = wordIndex + 1 === words.length ? 0 : wordIndex + 1;
+    setWordIndex(next);
+  }
+
+  return (
+    <div>
+      <p>
+        {word} has {letterCount} letters
+      </p>
+      <button onClick={handleChangeIndex}>Next word</button>
+      <p>Counter: {count}</p>
+      <button onClick={() => setCount(count + 1)}>+</button>
+    </div>
+  );
+}
+
+```
+
+### 5. Refs and useRef
+
+`Refs` are a special attribute that are available on all React components. They allow us to create a reference to a given element / component when the component mounts.
+`useRef` allows us to easily use React refs
+   -   We call useRef (at top of component) and attach the returned value to the element's ref attribute to refer to it
+    -   Once we create a reference, we use the current property to modify (mutate) the element's properties or can call any available methods on that element (like .focus() to focus an input)
+
+```javascript
+function App() {
+  const [query, setQuery] = React.useState("react hooks");
+  // we can pass useRef a default value
+  // we don't need it here, so we pass in null to ref an empty object
+  const searchInput = useRef(null);
+
+  function handleClearSearch() {
+    // current references the text input once App mounts
+    searchInput.current.value = "";
+    // useRef can store basically any value in its .current property
+    searchInput.current.focus();
+  }
+
+  return (
+    <form>
+      <input
+        type="text"
+        onChange={event => setQuery(event.target.value)}
+        ref={searchInput}
+      />
+      <button type="submit">Search</button>
+      <button type="button" onClick={handleClearSearch}>
+        Clear
+      </button>
+    </form>
+  );
+}
+```
+---
+There are many other React concepts to learn, but these are the ones I believe you must know before any others to set you on the path to React mastery in 2020. 
+
 

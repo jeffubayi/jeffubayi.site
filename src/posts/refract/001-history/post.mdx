@@ -31,11 +31,11 @@ You can expose your API in different ways with Django. While GraphQL is a safe b
 
 Here is a walkthrough of parts of this tutorial;
 
-  1. Structure and setup
-  2. Front end
-  3. Back end
-  4. Running the app
-  5. Conclusion
+ - 1. Structure and setup
+ - 2. Front end
+ - 3. Back end
+ - 4. Running the app
+ - 5. Conclusion
 
 ## 1. Structure and setup
 
@@ -44,8 +44,9 @@ Lets build an Online cloth store app that accepts endpoints for products and cat
 The code is available on my [github](https://github.com/jeffubayi/Macrina) and here is the [Demo](https://macrina.netlify.app/) app.
 
 Note that we’re literally building two separate apps here.
-1. The React client
-2. The Django API server
+
+  - 1. The React client
+  - 2. The Django API server
 
 
 ## 2.Front End
@@ -54,9 +55,9 @@ The focus of this article is to show you how to consume a Django API quickly fro
 
 Navigate to whatever directory on your machine in which you write code, create the top-level app directory called `Macrina` /or any given directory name.
 
-         mkdir Macrina-store
+          mkdir cloth-store
 
-         cd Macrina-store
+         cd cloth-store
 
          npx create-react-app client
 
@@ -69,7 +70,7 @@ Navigate to whatever directory on your machine in which you write code, create t
 Now, update the `package.json` that was created. It should look like this:
 ```javascript
 {
-  "name": "Macrina-store",
+  "name": "cloth-store",
   "version": "1.0.0",
   "description": "Modularizing",
   "keywords": [],
@@ -105,7 +106,7 @@ import superagent from 'superagent';
 
 import * as utils from './utils.js';
 
-let base = 'https://storefront-api.herokuapp.com/api/v1';
+let base = 'https://cloth-store-api.herokuapp.com/api/v1';
 
 export const get = async payload => {
   let url = base + '/' + Object.values(payload).join('/');
@@ -282,19 +283,24 @@ export default class Store extends React.Component {
 
 ## 3.Back End
 
-   $ py -m venv store
+   ```python
 
-   $ source store/bin/activate
+     $ py -m venv store
 
-   $ pip install django djangorestframework
+     $ source store/bin/activate
 
-   $ django-admin startproject Server
+     $ pip install django djangorestframework
 
-   $ python manage.py migrate
+     $ django-admin startproject Server
 
-   $ python manage.py createsuperuser
+     $ python manage.py makemigrations
 
-   $ python manage.py runserver
+     $ python manage.py migrate
+
+     $ python manage.py createsuperuser
+
+     $ python manage.py runserver
+   ```
 
 Now, when you open [http://localhost:8000](http://localhost:8000 "http://localhost:8000"), you should see this:
 
