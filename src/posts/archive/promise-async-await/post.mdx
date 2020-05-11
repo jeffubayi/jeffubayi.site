@@ -1,0 +1,112 @@
+---
+path: '/blog/promise-async-await'
+date: '2019-12-18'
+title: 'JavaScript: Promises or Async/Await '
+subtitle: 'I do not know about you, but I am not a fan of those chains when working with promises. In my opinion, using async/await makes the code more readable and cleaner.'
+featuredImage: './javascript.jpg'
+---
+
+When writing JavaScript, we often have to deal with tasks that rely on other tasks. Thus, we end up with many nested callback functions that are dependent on previous callback functions. This is often referred to as __callback hell__.
+
+Luckily, we now got something called **Promises** to help us out.
+
+## What are Promises🤞🤞 
+
+A promise is a placeholder for a value that can either resolve or reject at some time in the future.
+
+![](https://res.cloudinary.com/practicaldev/image/fetch/s--9A_mOYMP--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/duen4peq0bdr55cka5ya.png)
+
+Let’s see an example of a promise in JavaScript:
+```javascript
+const data = (url) => {
+
+  return fetch(url)
+
+    .then(response => {
+
+     if (response.status == 200) {
+
+     return response.json();
+
+     } else {
+
+     throw new Error(response.status);
+     }
+
+    });
+
+};
+```
+
+## What is Async/Await ♾⌛️
+
+Let's finally move on to Async/Await ! First things first: Async Await is not a total replacement for Promises. 
+
+**Async/Await** is built on top of promises, and it allows us to write asynchronous code more comfortably. It is just a new way of writing asynchronous code, besides promises and callbacks. It makes it look more “synchronous” too. .
+
+ Now, let’s see the same code re-written using  `Async/Await`.
+```javascript
+const data = async url => {
+
+    try {
+
+     const response = await fetch(url);
+
+     if (response.status != 200) {
+
+     throw new Error(response.status);
+
+     }
+
+     const responseData = await response.json();
+
+     return responseData;
+
+    } catch (err) {
+
+     // Failed to fetch the data
+
+     throw new Error(err);
+
+    }
+
+};
+```
+
+Which one do you prefer? In my opinion, it is clearer to understand what happens in the code when using  `async/await`.
+
+###  What is happening  
+
+Notice  that we are using the keyword `async` in the method header.  This implies that the function always returns a promise. The keyword `await` only works if you specify the keyword `async` in the method header.
+
+The keyword `await` makes the code wait until the promise is settled/rejected, and once it is resolved/rejected, it returns the result/error. Until the promise is settled, the engine can perform other things like executing other scripts. 
+
+In the example above, the code stops at  `const response = await fetch(url);`  and continues only after the promise is resolved. That is, once the URL is “fetched”. The constant response gets assigned whatever that URL returns. After that, the code resumes.
+
+## Benefits of using Async/Await? 
+
+#### Error handling
+
+Error stacks and debugging can be done for synchronous code and asynchronous code in the same construct. As a result, it provides better error handling. If there is an error in resolving the promise, the control jumps to the catch block to handle the error. Have a look at the second code snippet from above.
+
+You can even wrap multiple promises in the same try block, and the code catches the errors from all promises, not only from one. It also tells you where the error occurred, in which promise.
+
+#### Clean and concise  
+
+It allows us to write clear and better code.
+This is an advantage which is not that obvious when having just a few lines of code. But once you start writing a lot of code, it helps a lot in conciseness.
+
+####  Conditions
+
+Using less conditional operators in your code.  The first code snippet using the classic promise is a simple one. Imagine that you have four or more if statements. It quickly gets out of hand.
+
+## Conclusion  
+
+What should you remember from this article?
+
+-   Adding `async` to your method header, you always return a promise. Besides that, it allows you to use the `await` keyword. Therefore you can wait until a promise is resolved.
+-   Makes the code more explicit, easier to understand, and more concise.
+-   Using the `await` keyword, you block the code from executing until the promise is resolved or rejected.
+-   When the `promise` cannot settle, it generates an exception.
+
+Thank you for the read 👨💻.
