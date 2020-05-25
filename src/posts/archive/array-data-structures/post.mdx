@@ -1,0 +1,109 @@
+---
+path: '/blog/array-data-structures'
+date: '2020-05-25'
+title: 'Array Data Structures in Javascript'
+subtitle: 'Arrays are commonly used Data structure, hence it can be very handy to know your ways around arrays. Here are different ways to create Arrays'
+featuredImage: './array.png'
+---
+
+### The Array Data Structure
+
+An array data structure or an array is an ordered list of values, or a collection of elements (values or variables) identified by an index or key. The most simple type of array data structure is a linear array.
+
+In JavaScript as well, there are many ways to create arrays. We will be taking a look into some of them to create Arrays.
+
+----------
+
+**_Table of Contents:_**
+
+-   [Basic way](https://time2hack.com/different-ways-to-create-arrays-in-javascript/#basic-way)
+-   [With Array Constructor](https://time2hack.com/different-ways-to-create-arrays-in-javascript/#with-array-constructor)
+-   [Spread Operator](https://time2hack.com/different-ways-to-create-arrays-in-javascript/#spread-operator)
+-   [From another Array](https://time2hack.com/different-ways-to-create-arrays-in-javascript/#from-another-array)
+-   [From Array-Like Objects](https://time2hack.com/different-ways-to-create-arrays-in-javascript/#from-array-like-objects)
+-   [Using Loops like Map and Reduce](https://time2hack.com/different-ways-to-create-arrays-in-javascript/#using-loops-like-map-and-reduce)  
+    • [Array Map](https://time2hack.com/different-ways-to-create-arrays-in-javascript/#array-map)  
+    • [Array Reduce](https://time2hack.com/different-ways-to-create-arrays-in-javascript/#array-reduce)
+-   [New Array of Length and Fill with some value](https://time2hack.com/different-ways-to-create-arrays-in-javascript/#new-array-of-length-and-fill-with-some-value)
+-   [Form Objects using Object.keys and Object.values](https://time2hack.com/different-ways-to-create-arrays-in-javascript/#form-objects-using-object-keys-and-object-values)
+-   [Array Concat Function](https://time2hack.com/different-ways-to-create-arrays-in-javascript/#array-concat-function)
+
+----------
+
+## Basic way
+
+At first, the basic way to create arrays is here as follows:
+
+```js
+const animals = ['🐼', '🦁', '🐷', '🦊'];
+```
+
+----------
+
+## With Array Constructor
+
+Another way to create array is by using Array Constructor function.
+
+```js
+const Avengers = new Array('Hulk', 'Thor', 'Ironman', 'Captain America');
+```
+
+You can achieve same with new Array function  `of`. Like in the following example for  `Array.of`  , we create array of mixed values:
+
+```js
+const Avengers = Array.of('Hulk', null, 'Thor', undefined);
+console.log(Avengers);
+// 👆 (4) ["Hulk", null, "Thor", undefined]
+```
+
+Interesting thing to notice about the Constructor function is its handy override. The override is that if you pass only one argument and it is an integer, the Constructor function will create an empty array for you of that specified length.
+
+----------
+
+## Spread Operator
+
+It **spreads** the items that are contained in an **iterable** (an iterable is anything that can be looped over, like Arrays, Sets…) inside a **receiver** (A receiver is something that receives the spread values)
+
+Like in the following example, we will add the new item and spread the old array to create a complete new Array.
+
+```js
+const moreAvengers = ['Cpt Marvel', ...animals ];
+```
+
+----------
+
+## From another Array
+
+`Array.from`  will allow you to create the Arrays from another array.
+
+The newly created array is completely new copyrights and is not gonna mutate any changes to the old array.
+
+```js
+const Avengers = new Array('hulk', 'thor', 'Cpt America', 'ironman');
+const copyOfAvengers = Array.from(Avengers);
+```
+
+----------
+
+## From Array-Like Objects
+
+Some Lists look like Arrays but are not arrays. And, at that time you might wanna convert it to Array to better operability and readability on the data structure.
+
+One of such list is NodeList which you receive as an output of  `document.querySelectorAll`
+
+```js
+const divs = document.querySelectorAll('div');
+const divsArray = Array.prototype.slice.call(divs);
+```
+
+Here you can use the  `Array.from`  function as well to create the array from the Array-like objects. Let’s see that in the following example:
+
+```js
+const divs = document.querySelectorAll('div');
+const divsArray = Array.from(divs);
+```
+
+![](https://res.cloudinary.com/time2hack/image/upload/q_auto:good,f_auto/nodelist-to-array-time2hack.png)
+
+----------
+
