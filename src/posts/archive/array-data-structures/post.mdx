@@ -73,7 +73,7 @@ It **spreads** the items that are contained in an **iterable** (an iterable is a
 Like in the following example, we will add the new item and spread the old array to create a complete new Array.
 
 ```js
-const moreAvengers = ['Cpt Marvel', ...avengers ];
+const moreAvengers = ['Cpt Marvel', ...Avengers ];
 ```
 
 ----------
@@ -122,8 +122,11 @@ Map function will loop over items and return a new array of mapped Items
 
 ```js
 const Avengers = ['Hulk', 'Thor', 'Ironman', 'Cpt Amrica'];
+
 const avengersEndgame = Avengers.map(a => `${a} kills Thanos`);
+
 console.log(avengersEndgame);
+
 // 👆 (4) ["Hulk kills Thanos", "Thor kills Thanos", "Ironman kills Thanos", "Cpt America kills Thanos"]
 ```
 
