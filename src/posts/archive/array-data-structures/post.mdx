@@ -2,39 +2,46 @@
 path: '/blog/array-data-structures'
 date: '2020-05-25'
 title: 'Array Data Structures in Javascript'
-subtitle: 'Arrays are commonly used in Javascript Data structure, hence it can be very handy to know your ways around arrays. Here are different ways to create Arrays'
+subtitle: 'Arrays are indispensable data-structures in javascript and understanding how to effectively use them to solve problems is a crucial skill to master.'
 featuredImage: './array.png'
 ---
 
 
 An array data structure or an array is an ordered list of values, or a collection of elements (values or variables) identified by an index or key. The most simple type of array data structure is a linear array.
 
-In JavaScript as well, there are many ways to create arrays. We will be taking a look into some of them to create Arrays.
+![](https://res.cloudinary.com/practicaldev/image/fetch/s--3-O-LstM--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://dev-to-uploads.s3.amazonaws.com/i/m4mkcwylwu18p0o0h4wa.png)
+
+In JavaScript as well, there are many ways to create arrays. We will be taking a look into some of them to create Arrays
 
 ----------
 
 **_Table of Contents:_**
 
--   [Basic way](https://www.jeffubayi.site/blog/array-data-structures#basic-way)
--   [With Array Constructor](https://www.jeffubayi.site/blog/array-data-structures#with-array-constructor)
--   [Spread Operator](https://www.jeffubayi.site/blog/array-data-structures#spread-operator)
--   [From another Array](https://time2hack.com/different-ways-to-create-arrays-in-javascript/#from-another-array)
--   [From Array-Like Objects](https://time2hack.com/different-ways-to-create-arrays-in-javascript/#from-array-like-objects)
--   [Using Loops like Map and Reduce](https://time2hack.com/different-ways-to-create-arrays-in-javascript/#using-loops-like-map-and-reduce)  
-    • [Array Map](https://time2hack.com/different-ways-to-create-arrays-in-javascript/#array-map)  
-    • [Array Reduce](https://time2hack.com/different-ways-to-create-arrays-in-javascript/#array-reduce)
--   [New Array of Length and Fill with some value](https://time2hack.com/different-ways-to-create-arrays-in-javascript/#new-array-of-length-and-fill-with-some-value)
--   [Form Objects using Object.keys and Object.values](https://time2hack.com/different-ways-to-create-arrays-in-javascript/#form-objects-using-object-keys-and-object-values)
--   [Array Concat Function](https://time2hack.com/different-ways-to-create-arrays-in-javascript/#array-concat-function)
+-   [Basic way](https://www.jeffubayi.site/blog/array-data-structures/#basic-way)
+-   [With Array Constructor](https://www.jeffubayi.site/blog/array-data-structures/#with-array-constructor)
+-   [Spread Operator](https://www.jeffubayi.site/blog/array-data-structures/#spread-operator)
+-   [From another Array](https://www.jeffubayi.site/blog/array-data-structures/#from-another-array)
+-   [From Array-Like Objects](https://www.jeffubayi.site/blog/array-data-structures/#from-array-like-objects)
+-   [Using Loops like Map and Reduce](https://www.jeffubayi.site/blog/array-data-structures/#using-loops-like-map-and-reduce)  
+    • [Array Map](https://www.jeffubayi.site/blog/array-data-structures/#array-map)  
+    • [Array Reduce](https://www.jeffubayi.site/blog/array-data-structures/#array-reduce)
+-   [New Array of Length and Fill with some value](https://www.jeffubayi.site/blog/array-data-structures/#new-array-of-length-and-fill-with-some-value)
+-   [Form Objects using Object.keys and Object.values](https://www.jeffubayi.site/blog/array-data-structures/#form-objects-using-object-keys-and-object-values)
+-   [Array Concat Function](https://www.jeffubayi.site/blog/array-data-structures/#array-concat-function)
 
 ----------
+
+I'll be using the Avengers Comic flick just to make learning fun while creating an array of Superheros.
+![](https://www.longislandpress.com/wp-content/uploads/2017/07/the-avengers-15-1.jpg)
+
+Lets "Assemble the Avengers".
 
 ## Basic way
 
 At first, the basic way to create arrays is here as follows:
 
 ```js
-const avengers = ['Ironman', 'Hulk', 'Thor', 'Cpt America'];
+const Avengers = ['Ironman', 'Hulk', 'Thor', 'Cpt America'];
 ```
 
 ----------
@@ -44,7 +51,7 @@ const avengers = ['Ironman', 'Hulk', 'Thor', 'Cpt America'];
 Another way to create array is by using Array Constructor function.
 
 ```js
-const Avengers = new Array('Hulk', 'Thor', 'Ironman', 'Captain America');
+const Avengers = new Array('Hulk', 'Thor', 'Ironman', 'Cpt America');
 ```
 
 You can achieve same with new Array function  `of`. Like in the following example for  `Array.of`  , we create array of mixed values:
@@ -66,7 +73,7 @@ It **spreads** the items that are contained in an **iterable** (an iterable is a
 Like in the following example, we will add the new item and spread the old array to create a complete new Array.
 
 ```js
-const moreAvengers = ['Cpt Marvel', ...animals ];
+const moreAvengers = ['Cpt Marvel', ...avengers ];
 ```
 
 ----------
@@ -78,7 +85,7 @@ const moreAvengers = ['Cpt Marvel', ...animals ];
 The newly created array is completely new copyrights and is not gonna mutate any changes to the old array.
 
 ```js
-const Avengers = new Array('hulk', 'thor', 'Cpt America', 'ironman');
+const Avengers = new Array('Hulk', 'Thor', 'Cpt America', 'Ironman');
 const copyOfAvengers = Array.from(Avengers);
 ```
 
@@ -104,5 +111,122 @@ const divsArray = Array.from(divs);
 
 ![](https://res.cloudinary.com/time2hack/image/upload/q_auto:good,f_auto/nodelist-to-array-time2hack.png)
 
-----------
+
+## Using Loops like Map and Reduce
+
+Event though map and reduce are used to loop over the Arrays. Their non-mutating nature allows us to create new Arrays in different ways.
+
+### Array Map
+
+Map function will loop over items and return a new array of mapped Items
+
+```js
+const Avengers = ['Hulk', 'Thor', 'Ironman', 'Cpt Amrica'];
+const avengersEndgame = Avengers.map(a => `${a} kills Thanos`);
+console.log(avengersEndgame);
+// 👆 (4) ["Hulk kills Thanos", "Thor kills Thanos", "Ironman kills Thanos", "Cpt America kills Thanos"]
+```
+
+### Array Reduce
+
+Reduce will allow you to loop over the items and do any kind of operation related to the item. The outputs of those operations can be added to any kind of collection, and here, a new Array.
+
+```js
+const avengers = ['Ironman', 'Hulk', 'Thor', 'cpt America'];
+const avengersCopy = avengers.reduce((gang, avengers) => [
+  ...gang,
+  { avengers }
+], []);
+console.log(avengersCopy);
+/* 👆 
+    .    (4) [{…}, {…}, {…}, {…}]
+    .    0: {avenger: "Hulk"}
+    .    1: {avenger: "Thor"}
+    .    2: {avenger: "Cpt America"}
+    .    3: {avenger: "Ironman"}
+    .    length: 4
+*/
+```
+
+
+## New Array of Length and Fill with some value
+
+We can quickly create new Arrays of any finite length with Array constructor.
+
+All we have to do is to pass that indefinite length of the desired array as a number to the constructor.
+
+Like in the following example, we will create a new Array of length  `6`.
+
+Though creating an empty array is useless because you will not be able to use the Array functions until it has items in it.
+
+One quick way to do so is to use the  `.fill`  method of the array and put an arbitrary value in each index of the Array.
+
+Once the array is Filled,  you can use the loops to enhance it more with the different values.
+
+```js
+const emojis = new Array( 6 ).fill( '😎' );
+console.log(emojis);
+// 👆 (6) ["😎", "😎", "😎", "😎", "😎", "😎"]
+
+// Breakdown: 
+const arr = new Array( 6 );
+console.log(arr);
+/* 👆
+    .    (6) [empty × 6]
+    .    length: 6
+*/
+arr.fill( Math.random().toFixed(2) );
+/* 👆
+    .    (6) ["0.80", "0.80", "0.80", "0.80", "0.80", "0.80"]
+    .    0: "0.80"
+    .    1: "0.80"
+    .    2: "0.80"
+    .    3: "0.80"
+    .    4: "0.80"
+    .    5: "0.80"
+    .    length: 6
+*/
+```
+
+
+
+## Form Objects using Object.keys and Object.values
+
+You can create array of Keys or Values of any Object with functions  `Object.keys`  and  `Object.values`  respectively.
+
+```js
+const days = {
+  1: 'Monday',
+  2: 'Tuesday',
+  3: 'Wednesday',
+  4: 'Thursday',
+  5: 'Friday',
+  6: 'Saturday',
+  7: 'Sunday'
+};
+```
+
+![](https://res.cloudinary.com/time2hack/image/upload/q_auto:good,f_auto/object.keys-and-object.values.png)
+
+
+## Array Concat Function
+
+You can use the Array Concat function to create new Arrays as well.
+
+If you use an empty array as the starting point, the output of  `[].concat`  will be a new copy of concatenated Arrays.
+
+```js
+const Avenger = ['Hulk'];
+const moreAvengers = [].concat(Avenger, 'Thor', ['Ironman']);
+console.log(moreAvengers);
+// (3) ["Hulk", "Thor", "Ironman"]
+```
+
+
+
+## Conclusion
+
+As we have seen some different ways to create Arrays in JavaScript.
+
+Not all of these methods can be used in same ways and every methods has its perk for specific use cases.
 
