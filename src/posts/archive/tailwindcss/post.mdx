@@ -1,0 +1,80 @@
+---
+path: '/blog/tailwindcss'
+date: '2020-05-31'
+title: 'Getting started with Tailwind CSS'
+subtitle: 'A CSS library that gives you all of the building blocks you need for building 21st-century web interfaces & designs without opinionated styles.'
+featuredImage: './tailwind.png'
+---
+## What is Tailwind css
+
+Tailwind CSS is a utility-first CSS framework intended to ease building web applications with speed and less focus to writing custom CSS, without leaving the comfort zone of your HTML code, yet achieve awesome interfaces.
+
+![](https://seeklogo.com/images/T/tailwind-css-logo-5AD4175897-seeklogo.com.png)
+
+However, even though Tailwind is considered a framework it doesn't fit under the same philosophy as the others. Tailwind is primarily a utility 🛠 framework or rather a utility bundle.
+*`Utility-class` * as building complex components from a constrained set of primitive utilities.
+
+Other CSS frameworks like Bootstrap present you with diverse predefined components (such as modals, buttons, alerts, cards). But with Tailwind CSS, you get to make your own, or you’re forced to make your own depending on your project model. Another way to put it, you actually own the components, and you get to harness your customization power on any component of your choice. 
+ 
+![](https://res.cloudinary.com/practicaldev/image/fetch/s--gDacVBBY--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_66%2Cw_880/https://thepracticaldev.s3.amazonaws.com/i/tqpthh0cv88anxyg48m0.gif)
+
+This means that there is no more need to fight against the framework, and trying to figure out which classes need to be overridden in order to get results you initially aimed for.
+
+## Example
+To help you get started, I've included a  component example built with utility classes that might be helpful for inspiration on how to create UI interfaces.
+Here is  the source code is on my [Codepen](https://codepen.io/jeffubayi/pen/QWjejaO).
+
+![](https://res.cloudinary.com/drrzwqvfh/image/upload/v1590781230/tailwind_zkfbbg.png)
+
+```jsx
+<div class = "max-w-sm mx-auto bg-gray-300 shadow-lg rounded-lg overflow-hidden">
+  <div class="sm:flex sm:items-center px-6 py-4">
+    <img class = "block mx-auto sm:mx-0 sm:flex-shrink-0 h-16 sm:h-24 rounded-full"src="https://res.cloudinary.com/drrzwqvfh/image/upload/v1590779925/profile-pic-7b90c94f567c1a6c63b5873983d557e4_tact1l.jpg" alt="jeff">
+    <div class ="mt-4 sm:mt-0 sm:ml-4 text-center sm:text-left">
+      <p class ="text-xl leading-tight text-white-100"> Jeff Ubayi</p>
+      <p class ="text-sm leading-tight text-gray-700"> Software Developer</p>
+      <div class = "mt-4">
+        <button class ="text-blue-600 hover:text-white hover:bg-blue-300 border border-blue-400 text-xs font-semibold rounded-full px-4 py-1 -normal"> Hire me</button>
+      </div>
+    </div>
+  </div>
+</div>
+```
+In the above example, we have used;
+
+- The [max-width](https://tailwindcss.com/docs/max-width) and [margin](https://tailwindcss.com/docs/margin) utilities (`max-w-sm` and `mx-auto`) to constrain the card width and center it horizontally
+- The [width](https://tailwindcss.com/docs/width) and [height](https://tailwindcss.com/docs/height) utilities (`w-12` and `h-16`) to size the profile image
+- The [font size](https://tailwindcss.com/docs/font-size), [text color](https://tailwindcss.com/docs/text-color), and [line-height](https://tailwindcss.com/docs/line-height) utilities (`text-xl`, `text-gray-700`, `leading-tight`, etc.) to style the card text
+- The [margin](https://tailwindcss.com/docs/margin) and [padding](https://tailwindcss.com/docs/padding) utilities (`mt-1` and `pt-1`) to position the card text
+- The [background color](https://tailwindcss.com/docs/background-color), [border radius](https://tailwindcss.com/docs/border-radius), and [box-shadow](https://tailwindcss.com/docs/box-shadow) utilities (`bg-white`, `rounded-lg`, and `shadow-xl`) to style the card's appearance
+
+
+Now I know what you're thinking,  _"this is an atrocity, what a horrible mess!"_  and you're right, it's kind of ugly. In fact it's just about impossible to think this is a good idea the first time you see it —  **you have to actually try it**.
+
+But once you've actually built something this way, you'll quickly notice some really important benefits in terms of: 
+  [Responsive design](https://tailwindcss.com/docs/responsive-design), using predefined [design systems](https://tailwindcss.com/docs/theme)  and styling with [Pseudo-classes](https://tailwindcss.com/docs/pseudo-class-variants).
+
+## Why use Tailwind
+
+#### 1. Component friendly
+
+Tailwind provides tools for extracting component classes from repeated utility patterns, making it easy to update multiple instances of a component from one place:
+
+#### 2. No naming conventions
+
+One of the most stressful parts of writing custom CSS is having to name classes. At every point, you’re pondering which class should be generic or specific. How do you organize them and ensure they’re cascaded? Tailwind CSS solves those problems seamlessly by providing utility-based classes that can be used all the time.
+
+#### 3. Designed to be customized
+
+Tailwind is written in [PostCSS] and configured in Javascript making it easy to customize colors, border sizes, font weights, spacing utilities, breakpoints, shadows, and tons more.
+
+#### 4. Cache benefits
+
+When writing custom CSS, you always have to make changes to your CSS files when making changes in your designs. With Tailwind CSS, you need not worry a bit about that since you’re using the same classes over and over again within the markup
+
+## Conclusion
+
+I think the idea of utility first approach is the way forward. This gives flexibility to the engineers to build UI's how ever they choose while leveraging the power of the utility. The utility updating under the hood allows to better browser support.
+
+With Tailwind CSS, you get to create the components that suit what you want or what you are working on. These components can be created by harnessing the power of the utility-first prowess of Tailwind CSS. If you are tired of making use of Bootstrap and its likes, you’ll find Tailwind CSS a good fit for working on beautiful interfaces as you implement the designs you need using the utility classes it provides
+
