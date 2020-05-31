@@ -12,6 +12,7 @@ Tailwind CSS is a utility-first CSS framework intended to ease building web appl
 ![](https://seeklogo.com/images/T/tailwind-css-logo-5AD4175897-seeklogo.com.png)
 
 However, even though Tailwind is considered a framework it doesn't fit under the same philosophy as the others. Tailwind is primarily a utility 🛠 framework or rather a utility bundle.
+
 *`Utility-class` * as building complex components from a constrained set of primitive utilities.
 
 Other CSS frameworks like Bootstrap present you with diverse predefined components (such as modals, buttons, alerts, cards). But with Tailwind CSS, you get to make your own, or you’re forced to make your own depending on your project model. Another way to put it, you actually own the components, and you get to harness your customization power on any component of your choice. 
@@ -43,10 +44,10 @@ Here is  the source code is on my [Codepen](https://codepen.io/jeffubayi/pen/QWj
 In the above example, we have used;
 
 - The [max-width](https://tailwindcss.com/docs/max-width) and [margin](https://tailwindcss.com/docs/margin) utilities (`max-w-sm` and `mx-auto`) to constrain the card width and center it horizontally
+- The [background color](https://tailwindcss.com/docs/background-color), [border radius](https://tailwindcss.com/docs/border-radius), and [box-shadow](https://tailwindcss.com/docs/box-shadow) utilities (`bg-gray-300`, `rounded-lg`, and `shadow-lg`) to style the card's appearance
 - The [width](https://tailwindcss.com/docs/width) and [height](https://tailwindcss.com/docs/height) utilities (`w-12` and `h-16`) to size the profile image
 - The [font size](https://tailwindcss.com/docs/font-size), [text color](https://tailwindcss.com/docs/text-color), and [line-height](https://tailwindcss.com/docs/line-height) utilities (`text-xl`, `text-gray-700`, `leading-tight`, etc.) to style the card text
-- The [margin](https://tailwindcss.com/docs/margin) and [padding](https://tailwindcss.com/docs/padding) utilities (`mt-1` and `pt-1`) to position the card text
-- The [background color](https://tailwindcss.com/docs/background-color), [border radius](https://tailwindcss.com/docs/border-radius), and [box-shadow](https://tailwindcss.com/docs/box-shadow) utilities (`bg-white`, `rounded-lg`, and `shadow-xl`) to style the card's appearance
+- The [margin](https://tailwindcss.com/docs/margin) and [padding](https://tailwindcss.com/docs/padding) utilities (`mt-4` and `px-6`) to position the card text
 
 
 Now I know what you're thinking,  _"this is an atrocity, what a horrible mess!"_  and you're right, it's kind of ugly. In fact it's just about impossible to think this is a good idea the first time you see it —  **you have to actually try it**.
@@ -71,6 +72,16 @@ Tailwind is written in [PostCSS] and configured in Javascript making it easy to 
 #### 4. Cache benefits
 
 When writing custom CSS, you always have to make changes to your CSS files when making changes in your designs. With Tailwind CSS, you need not worry a bit about that since you’re using the same classes over and over again within the markup
+
+
+#### 5. Responsive
+
+Tailwind uses an intuitive {screen}: prefix that makes it easy to notice responsive classes in your markup while keeping the original class name recognizable and intact.
+  
+   - `sm`: small screen
+  - `md`: medium screen
+  - `lg`: large screen
+  - `xl`: extra large
 
 ## Conclusion
 
