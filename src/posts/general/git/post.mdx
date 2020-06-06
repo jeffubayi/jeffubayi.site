@@ -8,7 +8,7 @@ featuredImage: './get.jpg'
 ---
 
 It's such a waste of time and energy to have git-ignorant co-worker. Read the damn manual.
-A few tips on how I go about using git.
+A good place to get started with git is [here](https://git-scm.com/book/en/v2)
 
 ***What is git?***
 
@@ -206,7 +206,13 @@ Modify amend the previous commit
 
 Save uncommitted changes for later use
 
-      $ git stash    
+      $ git stash   
+
+Making a pull request
+
+Pull Request (PR) is a Github feature that allows users to collaborate better together. Usually in source control software there is a main branch that describes production — in git it is the master branch. One can create a feature branch and make changes there, then issue a PR to the master branch for someone else to review, approve or reject the changes and merge to the master branch eventually. Discussing potential improvements is crucial to write and maintain a high quality repository.
+![](https://hackernoon.com/hn-images/0*2BLStUiqfi8r2ehQ)
+Now PR is a Github feature, but it relies on the git feature named `request-pull`. Git supports PRs by providing a feature that lets you request a pull from one working set to another from different branches or different repositories. The command lets you review a summarise of the feature branch with all the commits and changes that are going to be merged. When working with PRs it is recommended to work in a feature branch and not on the master and make PRs to the master.
 ---
 That's all, Hope you git it now 👨💻
 
