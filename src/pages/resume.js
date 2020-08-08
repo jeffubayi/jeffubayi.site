@@ -39,7 +39,7 @@ const ResumePage = () => (
 	
 				<Resume.Description>
 					<p>
-					Developed React components with styled components , Material UI and Storybook for User Interface testing.
+					Developing React web apps with styled components , Material UI and Storybook for User Interface testing.
                 Learned alot about Git and Github platform and got accustomed to frontend development  and design tools such as Figma and Zeplin.                                        
                 Utilized my mornings, nights and weekends to learn about and gain experience in software development.
 
