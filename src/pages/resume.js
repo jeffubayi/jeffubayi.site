@@ -27,9 +27,30 @@ const ResumePage = () => (
 				</p>
 			</WaveSection>
 			<Resume.Position
+				name="Twende Carpool"
+				link="https://www.twende.app/"
+				start="June 2020"
+			>
+				<Resume.Role
+					name="Front-End Developer"
+					start="Intern"
+					end=""
+				/>
+	
+				<Resume.Description>
+					<p>
+					Developed React components with styled components , Material UI and Storybook for User Interface testing.
+                Learned alot about Git and Github platform and got accustomed to frontend development  and design tools such as Figma and Zeplin.                                        
+                Utilized my mornings, nights and weekends to learn about and gain experience in software development.
+
+					</p>
+				</Resume.Description>
+			</Resume.Position>
+			<Resume.Position
 				name="EAC Directory"
 				link="https://eacdirectory.net/domains"
 				start="November 2019"
+				end="May 2020"
 			>
 				<Resume.Role 
                                     name="Junior Web Developer" 
@@ -51,31 +72,12 @@ const ResumePage = () => (
 	                <Resume.Role name="Editor & Developer" />
 				<Resume.Description>
 					<p>
-						Maintainer​ of ​NaiBlog​, a blogsite with articles that 
+						Founder of ​NaiBlog​, a blogsite with articles that 
 	                                        speaks of societal issues,entertainment and youth empowerment.
 					</p>
 				</Resume.Description>
 			</Resume.Position>
-			<Resume.Position
-				name="Kenya Ports Authority"
-				link="https://www.kpa.co.ke"
-				start="January 2018"
-				end="May 2018"
-			>
-				<Resume.Role
-					name="System Admin/Tech support"
-					start="Intern"
-					end=""
-				/>
-	
-				<Resume.Description>
-					<p>
-	                                    Worked on maintaining SAP server for Kenya Ports database optimization system.  
-				            learnt alot about using Linux OS and network configuration protocols. Also Gained  
-	                                    skills on time management, troubleshooting and working under pressure.
-					</p>
-				</Resume.Description>
-			</Resume.Position>
+			
 		</Resume>
 	</Layout>
 )

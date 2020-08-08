@@ -2,7 +2,7 @@
   "name": "ubeezy",
   "private": true,
   "description": "A gatsby portfolio and blog",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "jeffubayi",
   "dependencies": {
     "@babel/core": "^7.8.3",

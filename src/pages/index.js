@@ -3,6 +3,7 @@ import React from 'react'
 import {
 	Layout,
 	Link,
+	QueryImage,
 	PostGrid,
 	PostLink,
 	SEO,
@@ -24,9 +25,10 @@ const IndexPage = ({ data }) => {
 				<h1 className="intro-title">Hello!</h1>
 				<p>
 					 I'm Jeff, a software developer based in Nairobi, KE. I enjoy building 
-		                         things that live on the internet, both websites and web apps that provide
+		                         things that live on the internet, both mobile and web apps that provide
 		                         modern responsive design, pixel-perfect user interfaces with efficient backend.
 		                         
+			<QueryImage name="hero" width={300} />
 				</p>
 				<br />
 				<p>
