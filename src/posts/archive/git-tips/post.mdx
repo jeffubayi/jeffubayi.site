@@ -1,0 +1,102 @@
+---
+path: '/blog/git-tips'
+date: '2020-08-24'
+title: 'Git Tips '
+subtitle: 'I do not know about you, but I am not a fan of those chains when working with promises. In my opinion, using async/await makes the code more readable and cleaner.'
+featuredImage: './gittip.png'
+---
+![](https://www.flaticon.com/free-icon/github_1051377?utm_source=designspiration.net&utm_medium=referral-content&utm_campaign=designspiration)
+ You're already using source control for managing your code,and its probably git right? 
+ Git is free and open source, has a tiny footprint, and can fit within the workflow that suits you best. 
+ Generally, it doesn't force you to work in a particular way, which means there are many different methodologies 
+ on how to use its features, like staging areas, branching and tagging releases. If you are anything like me, 
+ you love to explore how other developers work. So get ready to start modifying your .gitconfig, because you're in for a treat. 
+ Here is a list of useful git and github tips to save your time and improve your work.
+ 
+ 1. Use github extentions
+ 2. Add git aliases
+ 3. staging your changes in hunks
+ 4. Restore a deleted git tag
+ 5. Visualizing the commit graph
+ 6. All seeing reflog
+ 6. git manual
+ 7. Cherry Pick your commits
+ 
+ ## 1. use github extentions
+
+ Github comes with some awesome chrome extentions to make it easy to navigate. 
+ Here are 5 github extentions I would recommend to make your github look more like your Vscode;
+ 
+   1) [Github Dark Theme](https://chrome.google.com/webstore/detail/github-dark-theme/odkdlljoangmamjilkamahebpkgpeacp?hl=en) - Allow you to view Github in a dark mode for those who love dark themes
+ 
+   2) [Enhanced github](https://chrome.google.com/webstore/detail/enhanced-github/anlikcnbgdeidpacdbdljnabclhahhmd?hl=en) - Allows you to download individual files in your repo.
+   
+   3) [Octotree](https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc?hl=en)- Allows you to navigate your github repo like VScode sidebar functionality
+
+   4) [File Icons](https://chrome.google.com/webstore/detail/file-icons-for-github-and/ficfmibkjjnpogdcfhfokmihanoldbfe?hl=en) - Makes your files icons more prettier.
+
+ ## 2.Aliases
+
+Aliases are another thing you can put in your `~/.gitconfig`. These work just like aliases in the command shell—they set up a new command name that can invoke one or more other commands, often with a particular set of options or flags. They're super useful for longer, more complicated commands you use frequently.
+Stop wasting time typing long commands and make yourself a few useful aliases.
+You can define aliases using the git config command i.e running;
+ 
+       `git config --global --add alias.st status `
+
+will make running `git st` do the same thing as running git status—but I find when defining aliases, it's frequently easier to just edit the ~/.gitconfig file directly.
+
+## 3. Stage your changes in hunks   
+
+A best practice when using Git is to make sure each commit consists of only a single logical change—whether that's a fix for a bug or a new feature. Sometimes when you're working, however, you'll end up with more than one commit's worth of change in your repository. How can you manage to divide things up so that each commit contains only the appropriate changes? git add --patch to the rescue!
+
+        `git add -p` or `git add --patch`
+
+This flag will cause the git add command to look at all the changes in your working copy and, for each one, ask if you'd like to stage it to be committed, skip over it, or defer the decision (as well as a few other more powerful options you can see by selecting ? after running the command). git add -p is a fantastic tool for producing well-structured commits.
+
+## 4. Restore a deleted git tag
+
+A little tip that can be very useful, how to restore a deleted Git tag.
+If you juste deleted a tag by error, you can easily restore it following these steps. First, use
+
+        `git fsck --unreachable | grep tag`
+
+then, you will see the unreachable tag. If you have several tags on the list, use
+
+        `git show KEY`
+
+to found the good tag and finally, when you know which tag to restore, use
+
+        `git update-ref refs/tags/NAME KEY`
+
+and the previously deleted tag with restore with NAME.
+
+## 5. Visualizing the commit graph
+
+If you work on a project with a lot of branching activity, sometimes it can be difficult to get a 
+handle on all the work that's happening and how it's all related. Various GUI tools allow you to 
+get a picture of different branches and commits in what's called the "commit graph."
+If you're a dedicated command-line user or somebody who finds switching tools to be distracting,
+it's nice to get a similar view of the commit graph from the command line.
+ 
+    `git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative`
+ 
+The --graph option adds the graph to the left side of the log, --abbrev-commit shortens the commit SHAs, --date=relative expresses the dates in relative terms, and the --pretty bit handles all the other custom formatting. I have this aliased to git lg, and it is one of my top 10 most frequently run commands.
+
+## 6. The all-seeing reflog
+
+Have you ever rebased away a commit, then discovered there was something in that commit you wanted to keep? You may have thought that information was lost forever and would need to be recreated. But if you committed it in your local working copy, it was added to the reference log (reflog), and you should still be able to access it.
+
+    `git reflog`
+
+Running git reflog will show you a list of all the activity for the current branch in your local working copy and also give you the SHA1 of each commit. Once you've found the commit you rebased away, you can run git checkout <SHA1> to check out that commit, copy any information you need, and run git checkout HEAD to return to the most recent commit in the branch.
+
+## 7. git manual
+
+check what a certin git command does without leaving your command line space.
+
+     `git help -g` 
+     `git help <command>`
+---
+## Conclusion
+ 
+Hopefully at least one of these tips has taught you something new about Git, as it  continuing to innovate and add new features. What's your favorite Git trick?
