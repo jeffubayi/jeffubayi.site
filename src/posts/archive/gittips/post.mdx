@@ -1,11 +1,13 @@
 ---
-path: '/blog/git-tips'
+path: '/blog/gittips'
 date: '2020-08-24'
 title: 'Git Tips '
-subtitle: 'I do not know about you, but I am not a fan of those chains when working with promises. In my opinion, using async/await makes the code more readable and cleaner.'
+subtitle: 'I do not know about you, but I am not a fan of those chains when working with promises.'
 featuredImage: './gittip.png'
 ---
+
 ![](https://www.flaticon.com/free-icon/github_1051377?utm_source=designspiration.net&utm_medium=referral-content&utm_campaign=designspiration)
+
  You're already using source control for managing your code,and its probably git right? 
  Git is free and open source, has a tiny footprint, and can fit within the workflow that suits you best. 
  Generally, it doesn't force you to work in a particular way, which means there are many different methodologies 
@@ -86,7 +88,7 @@ The --graph option adds the graph to the left side of the log, --abbrev-commit s
 
 Have you ever rebased away a commit, then discovered there was something in that commit you wanted to keep? You may have thought that information was lost forever and would need to be recreated. But if you committed it in your local working copy, it was added to the reference log (reflog), and you should still be able to access it.
 
-    `git reflog`
+    git reflog
 
 Running git reflog will show you a list of all the activity for the current branch in your local working copy and also give you the SHA1 of each commit. Once you've found the commit you rebased away, you can run git checkout <SHA1> to check out that commit, copy any information you need, and run git checkout HEAD to return to the most recent commit in the branch.
 
