@@ -18,11 +18,11 @@ featuredImage: './gittip.png'
  
  1. Use github extentions
  2. Add git aliases
- 3. staging your changes in hunks
+ 3. Stage your changes in hunks
  4. Restore a deleted git tag
  5. Visualizing the commit graph
  6. All seeing reflog
- 6. git manual
+ 6. Git manual
  7. Cherry Pick your commits
  
  ## 1. Use github extentions
@@ -38,9 +38,11 @@ featuredImage: './gittip.png'
 
    4) [File Icons](https://chrome.google.com/webstore/detail/file-icons-for-github-and/ficfmibkjjnpogdcfhfokmihanoldbfe?hl=en) - Makes your files icons more prettier.
 
- ## 2.Aliases
+ ## 2. Aliases
 
-Aliases are another thing you can put in your `~/.gitconfig`. These work just like aliases in the command shell—they set up a new command name that can invoke one or more other commands, often with a particular set of options or flags. They're super useful for longer, more complicated commands you use frequently.
+Aliases are another thing you can put in your `~/.gitconfig`. 
+These work just like aliases in the command shell—they set up a new command name that can invoke one or more other commands, often with a particular set of options or flags. They're super useful for longer, more complicated commands you use frequently.
+
 Stop wasting time typing long commands and make yourself a few useful aliases.
 You can define aliases using the git config command i.e running;
  
@@ -76,8 +78,10 @@ and the previously deleted tag with restore with NAME.
 ## 5. Visualizing the commit graph
 
 If you work on a project with a lot of branching activity, sometimes it can be difficult to get a 
-handle on all the work that's happening and how it's all related. Various GUI tools allow you to 
-get a picture of different branches and commits in what's called the "commit graph."
+handle on all the work that's happening and how it's all related. 
+
+Various GUI tools allow you to get a picture of different branches and commits in what's called the "commit graph."
+
 If you're a dedicated command-line user or somebody who finds switching tools to be distracting,
 it's nice to get a similar view of the commit graph from the command line.
  
@@ -93,7 +97,7 @@ Have you ever rebased away a commit, then discovered there was something in that
 
 Running git reflog will show you a list of all the activity for the current branch in your local working copy and also give you the SHA1 of each commit. Once you've found the commit you rebased away, you can run `git checkout <SHA>` to check out that commit, copy any information you need, and run git checkout HEAD to return to the most recent commit in the branch.
 
-## 7. git manual
+## 7. Git manual
 
 check what a certin git command does without leaving your command line space.
 
@@ -102,4 +106,4 @@ check what a certin git command does without leaving your command line space.
 ---
 ## Conclusion
  
-Hopefully at least one of these tips has taught you something new about Git, as it  continuing to innovate and add new features. What's your favorite Git trick?
+Hopefully at least one of these tips has taught you something new about Git, as its  continuing to innovate and add new features. What's your favorite Git trick?
