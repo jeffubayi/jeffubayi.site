@@ -8,12 +8,14 @@ featuredImage: './gittip.png'
 
  You're already using source control for managing your code,and its probably git right? 
 
-![](https://static.viget.com/_284x284_crop_center-center_none/Git-Tips-030718.png?mtime=20180307141454&amp;focal=none)
+![](https://kinsta.com/wp-content/uploads/2018/02/git-1024x512.png)
 
  Git is free and open source, has a tiny footprint, and can fit within the workflow that suits you best. 
  Generally, it doesn't force you to work in a particular way, which means there are many different methodologies 
- on how to use its features, like staging areas, branching and tagging releases. If you are anything like me, 
- you love to explore how other developers work. So get ready to start modifying your .gitconfig, because you're in for a treat. 
+ on how to use its features, like staging areas, branching and tagging releases. 
+ 
+ If you are anything like me,you love to explore how other developers work. So get ready to start modifying your .gitconfig, because you're in for a treat. 
+ 
  Here is a list of useful git and github tips to save your time and improve your work.
  
  1. Use github extentions
@@ -52,11 +54,15 @@ will make running `git st` do the same thing as running git status—but I find 
 
 ## 3. Stage your changes in hunks   
 
-A best practice when using Git is to make sure each commit consists of only a single logical change—whether that's a fix for a bug or a new feature. Sometimes when you're working, however, you'll end up with more than one commit's worth of change in your repository. How can you manage to divide things up so that each commit contains only the appropriate changes? git add --patch to the rescue!
+A best practice when using Git is to make sure each commit consists of only a single logical change—whether that's a fix for a bug or a new feature. 
+
+Sometimes when you're working, however, you'll end up with more than one commit's worth of change in your repository. How can you manage to divide things up so that each commit contains only the appropriate changes? git add --patch to the rescue!
 
         `git add -p` or `git add --patch`
 
-This flag will cause the git add command to look at all the changes in your working copy and, for each one, ask if you'd like to stage it to be committed, skip over it, or defer the decision (as well as a few other more powerful options you can see by selecting ? after running the command). git add -p is a fantastic tool for producing well-structured commits.
+This flag will cause the git add command to look at all the changes in your working copy and, for each one, ask if you'd like to stage it to be committed, skip over it, or defer the decision (as well as a few other more powerful options you can see by selecting ? after running the command). 
+
+git add -p is a fantastic tool for producing well-structured commits.
 
 ## 4. Restore a deleted git tag
 
@@ -87,23 +93,74 @@ it's nice to get a similar view of the commit graph from the command line.
  
     `git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative`
  
-The --graph option adds the graph to the left side of the log, --abbrev-commit shortens the commit SHAs, --date=relative expresses the dates in relative terms, and the --pretty bit handles all the other custom formatting. I have this aliased to git lg, and it is one of my top 10 most frequently run commands.
+The --graph option adds the graph to the left side of the log, --abbrev-commit shortens the commit SHAs, --date=relative expresses the dates in relative terms, and the --pretty bit handles all the other custom formatting. 
+
+I have this aliased to git lg, and it is one of my top 10 most frequently run commands.
 
 ## 6. The all-seeing reflog
 
-Have you ever rebased away a commit, then discovered there was something in that commit you wanted to keep? You may have thought that information was lost forever and would need to be recreated. But if you committed it in your local working copy, it was added to the reference log (reflog), and you should still be able to access it.
+Have you ever rebased away a commit, then discovered there was something in that commit you wanted to keep? You may have thought that information was lost forever and would need to be recreated.
+
+But if you committed it in your local working copy, it was added to the reference log (reflog), and you should still be able to access it.
 
     git reflog
 
-Running git reflog will show you a list of all the activity for the current branch in your local working copy and also give you the SHA1 of each commit. Once you've found the commit you rebased away, you can run `git checkout <SHA>` to check out that commit, copy any information you need, and run git checkout HEAD to return to the most recent commit in the branch.
+Running git reflog will show you a list of all the activity for the current branch in your local working copy and also give you the SHA1 of each commit.
+
+Once you've found the commit you rebased away, you can run `git checkout <SHA>` to check out that commit, copy any information you need, and run git checkout HEAD to return to the most recent commit in the branch.
 
 ## 7. Git manual
 
-check what a certin git command does without leaving your command line space.
+Check what a certin git command does without leaving your command line space.
 
      `git help -g` 
      `git help <command>`
+
+## 8. Cherry Pick your commits
+
+You created the pull request on Github to just realize you have created your feature branch off the wrong branch.
+
+Now it's showing a lot more files than you actually changed, you will have to explain to the person who is going to review.
+
+Basically,fixing this kind of problem is pretty simple using this 3 steps.
+
+#### Step 1: Create a “backup” branch from our feature branch.
+
+```
+      # make sure you are in the correct branch
+
+git checkout feature
+
+# create the backup branch
+
+git checkout -b feature-bkp
+
+```
+#### Step 2: Re-create the feature branch from master:
+
+```
+ git checkout master
+
+git branch -D feature
+
+git checkout -b feature
+
+ ```
+ #### Step 3: You need to cherry pick your commits into the branch and force push to the origin
+
+```
+  git cherry-pick commit-hash-2
+
+git cherry-pick commit-hash-2
+
+git push origin feature —force
+
+```
+Please note that you do have to `—force` push since you changed the Git history compared to what’s in Github.
+
 ---
 ## Conclusion
  
 Hopefully at least one of these tips has taught you something new about Git, as its  continuing to innovate and add new features. What's your favorite Git trick?
+
+Subcribe for more git tips as I learn through the source control version world.
