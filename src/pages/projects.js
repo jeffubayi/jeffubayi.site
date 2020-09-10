@@ -173,19 +173,14 @@ const ProjectsPage = () => (
 					<QueryImage name="beba" width={300} />{' '}
 				</h3>
 				<p>
-					Expense tracking application that keeps you up per with your
-					income spending. Enables you to view your budget from a set
-					value (Ksh.) and item list of expenses. I initially built
-					the application with Vanilla JS as a goal to learn some
-					basic concepts. The final web app is{' '}
-					<Link to="https://www.jeffubayi.site/blog/Python-event-api">
-						here
-					</Link>{' '}
-					based of react hooks to make it more modern.
+					An Android/Ios app for Ride sharing /
+					 hailing that literally connects you to a vehicle  commute,
+					 Made with Flutter framework and deployed on Firebase.
+					 The app allows you to hail a ride by checking available trip.
 				</p>
 				<Small>
 					<Link
-						to="https://budget-yako.netlify.app/"
+						to="https://wabebe-58522.web.app/#/"
 						secondary
 						button
 					>
@@ -193,7 +188,7 @@ const ProjectsPage = () => (
 					</Link>
 					&nbsp;
 					<Link
-						to="https://github.com/jeffubayi/Budget-App"
+						to="https://github.com/jeffubayi/Beba"
 						secondary
 						button
 					>
