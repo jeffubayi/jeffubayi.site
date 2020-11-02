@@ -156,6 +156,13 @@ const ProjectsPage = () => (
 					The design follows Airbnb layout.
 				</p>
 				<small>
+				<Link
+						to="https://nyumba.netlify.app/"
+						secondary
+						button
+					>
+						Demo
+					</Link>
 					<Link
 						to="https://github.com/jeffubayi/Nyumba"
 						secondary
@@ -168,7 +175,7 @@ const ProjectsPage = () => (
 
 			<section>
 				<h3>
-					<Link to=""> Beba</Link>
+					<Link to="https://wabebe-58522.web.app/#/"> Beba</Link>
 					{''}
 					<QueryImage name="beba" width={300} />{' '}
 				</h3>
