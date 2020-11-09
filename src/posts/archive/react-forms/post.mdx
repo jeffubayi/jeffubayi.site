@@ -2,11 +2,11 @@
 path: '/blog/react-formik-forms'
 date: '2020-11-02'
 title: 'Building React Forms: Using Formik and Yup'
-subtitle: 'Formik is recommended by the React team as a complete solution and can handle validation, input bindings, as well as errors and state changes. With this recommendation, I set out to learn more and create some test examples to bring to my team.'
+subtitle: 'Formik is recommended by the React team as a complete solution and can handle validation, input bindings, as well as errors and state changes.Build forms without tears.'
 featuredImage: './forms.jpg'
 ---
 
-Building forms in react can be abit cumbersome, Formik intergates so well with react to solve most issues at hand.
+Sometimes managing forms in react can be a drag, Formik is here to your rescue,You can check the docs for more information about the library on [Formik](https://jaredpalmer.com/formik).
 
 ![](https://res.cloudinary.com/practicaldev/image/fetch/s--8lsOobIQ--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/n405vzvl1mfyyqo5mt1z.png)
  
@@ -21,9 +21,59 @@ Formik’s website claims to help you with the most annoying issues of forms:
 After creating a few forms myself using Formik, I can see how these common issues just disappear. Form values are not stored in state so we don’t need to manually bind them to an input. Instead, Formik keys off the name attribute and does the binding automatically.
 
 There are two ways to use Formik: 
+
   1. create a higher order component. `useFormik()`
   2. create a Formik component to wrap around your form. `<Formik/>`
 
-When you wrap your form in a Formik component, the child is a function and not a component. This function takes one argument which is a variety of props Formik passes you to manage state. This helps reduce the boilerplate code involved in creating a form by providing the following default props: handleSubmit, handleChange, initialValues, validation and more.
+When you wrap your form in a Formik component, the child is a function and not a component. This function takes one argument which is a variety of props Formik passes you to manage state. This helps reduce the boilerplate code involved in creating a form by providing the following default props: `handleSubmit`, `handleChange`, `initialValues`, `validation` and more.
 
 Using Formik has allowed us to create our own reusable form components which were a large factor in our decision to use the library. It makes creating new forms painless and allows us to test them easily.
+
+Finally, there is `Yup`. What is Yup? It is a JavaScript object schema validator and object parser. In this context Yup simply helps handle validation. This does not mean that you can’t write your own custom validator for Formik but I find my experience using Yup good and it improves the readability of my code.
+
+More on Yup here in the docs [Yup](https://www.npmjs.com/package/yup).
+
+Here is a quick overview of what we are going to do in this guide:
+
+  1. Create a react app using create-react-app.
+  2. Create a simple form with Material-UI and Formik.
+  3. Write validation rules/ validation schema with Yup.
+  4. Use Yup with Formik.
+
+This tutorial assumes you have knowledge of react.
+
+There is a code sandbox demo of the Mpesa payment form we are going to build here:
+[Formik Demo Application]()
+
+ ![Mpesa-payment]()
+
+## Getting Started
+
+First, you need to have a React application. You can use an existing one, or create a new one with create-react-app by running this command.
+
+        `$ npx create-react-app mpesa-formik`
+
+We also need to install Formik,Yup and material-UI to our dependencies.
+
+     `$ Yarn add or npm install formik yup @material-ui/core`
+
+
+What we have done here is create a simple form with four fields (Name,PhoneNumber, Amount, Password) a Dialogue and a Button with material-UI.
+
+
+--------------------------------------------
+
+## Conclusion
+
+Formik is a great solution to try if your team will be working with multiple forms. It allows for quick development as well as the freedom to create your own form components. This library is trusted by the community and currently has over 250,000 weekly downloads.
+
+Yup validation works really well with Formik and offers extensive API documentation.
+
+If you have had issues in the past with forms or are just starting out I would highly recommend looking at these options. Reduce that amount of boilerplate code and make forms fun again!
+
+## Takeaways
+Formik is a great solution to try if your team will be working with multiple forms. It allows for quick development as well as the freedom to create your own form components. This library is trusted by the community and currently has over 250,000 weekly downloads.
+
+Yup validation works really well with Formik and offers extensive API documentation.
+
+If you have had issues in the past with forms or are just starting out I would highly recommend looking at these options. Reduce that amount of boilerplate code and make forms fun again!
