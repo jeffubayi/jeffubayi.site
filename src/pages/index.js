@@ -24,10 +24,10 @@ const IndexPage = ({ data }) => {
 			<WaveSection>
 				<h1 className="intro-title">Hello!</h1>
 				<p>
-					I'm Jeff, a software developer based in Nairobi, KE. I enjoy
+					I'm Jeff, a Software Engineer based in Nairobi, KE. I enjoy
 					building things that live on the internet, both mobile and
-					web apps that provide modern responsive design,
-					pixel-perfect user interfaces with efficient backend.
+					web apps that provide modern responsive design with
+					pixel-perfect user interfaces.
 					<QueryImage name="hero" width={300} />
 				</p>
 				<br />
