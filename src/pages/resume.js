@@ -9,7 +9,10 @@ const ResumePage = () => (
 		<Resume>
 			<WaveSection disableTopMargin>
 				<p>
-					I'm currently looking for a full-time developer role with the right company.
+					I'm a Frontend Developer currently working at 
+					<b>
+						Twende Mobility.
+					</b>
 	                                My inbox is always open, whether for freelance opportunities or just a potential project.
 	                                I'll reply ASAP.
 	     
@@ -33,15 +36,15 @@ const ResumePage = () => (
 			>
 				<Resume.Role
 					name="Front-End Developer"
-					start="Intern"
+					start="full-time"
 					end=""
 				/>
 	
 				<Resume.Description>
 					<p>
-					Developing React web apps with styled components , Material UI and Storybook for User Interface testing.
-                Learned alot about Git and Github platform and got accustomed to frontend development  and design tools such as Figma and Zeplin.                                        
-                Utilized my mornings, nights and weekends to learn about and gain experience in software development.
+					Developing React web apps with styled components , Material UI and Firebase cloud functions s.
+                Experienced in CI/CD  platform and got accustomed to frontend development  and design tools such as Figma and Zeplin.                                        
+             
 
 					</p>
 				</Resume.Description>

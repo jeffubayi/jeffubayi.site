@@ -28,7 +28,7 @@ const ProjectsPage = () => (
 			<p>
 				Here's a brief introduction to some of the projects I've built
 				or made contributions to! I'm comfortable with working on
-				JavaScript, Python web frameworks and always exploring other
+				JavaScript and Python web frameworks , always exploring other
 				technologies that may be handy.
 			</p>
 		</WaveSection>
@@ -102,25 +102,18 @@ const ProjectsPage = () => (
 
 			<section>
 				<h3>
-					<Link to="https://macrina.netlify.app/"> Macrina</Link>
+					<Link to="https://macrina.netlify.app/"> Bazenga</Link>
 					{''}
 					<QueryImage name="macrina" width={300} />{' '}
 				</h3>
 
 				<p>
-					My girl sells designer women clothes, shoes, sweaters,
-					etc—and shares her stock with her online instagram
-					followers.
+					Online Freelance project for website ,mobile and chatbot development. Kinda like  my little corner of the web for digital marketing.
+					Experienced in building robust websites ,mobile apps and chatbots within your specified timeframe. Solving real world business problems with efficient and well thought out coding solutions.
 				</p>
 				<p>
-					Built uitilizing React and CSS on the front end and
-					showcases a fully functioning shopping cart. This site
-					retrieves endpoints for categories and products from a{' '}
-					<Link to="https://www.jeffubayi.site/blog/Python-event-api">
-						Macrina API
-					</Link>
-					Once categories and products are retrieved it caches them it
-					local storage to give the user a quick experience. Here is a{' '}
+				Your Digital Partner.Let's bring your ideas into reality by creating an online presence.
+					
 					<Link to="https://www.jeffubayi.site/blog/build-fullstack-apps-wih%20-react-django">
 						tutorial
 					</Link>{' '}
@@ -128,7 +121,7 @@ const ProjectsPage = () => (
 				</p>
 
 				<Small>
-					<Link to="https://macrina.netlify.app/" secondary button>
+					<Link to="https://bazenga.netlify.app/" secondary button>
 						Demo
 					</Link>
 					&nbsp;
@@ -136,7 +129,7 @@ const ProjectsPage = () => (
 						to="https://github.com/thisRaptori/saurussims"
 						secondary
 						button
-					>
+					> ss
 						<Icon name="GitHub" /> Code
 					</Link>
 				</Small>
